@@ -58,6 +58,31 @@
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-inline-sm); font-size: var(--type-label-size);
 }
 .gp-panel__status { font-weight: var(--font-weight-semibold); color: var(--color-accent-ink); }
+/* Ноутбук вокруг панели кабинета: крышка с рамкой, экран, корпус */
+.gp-laptop { display: flex; flex-direction: column; align-items: center; }
+.gp-laptop__lid {
+  position: relative; align-self: stretch; background: var(--color-bg-inverse);
+  border: var(--border-thin) solid var(--color-bg-media); border-radius: var(--gp-laptop-radius) var(--gp-laptop-radius) 0 0;
+  padding: var(--gp-laptop-bezel) var(--gp-laptop-bezel) var(--gp-laptop-chin);
+}
+.gp-laptop__lid::before {
+  content: ""; position: absolute; top: calc((var(--gp-laptop-bezel) - var(--gp-laptop-cam)) / 2); left: 50%;
+  width: var(--gp-laptop-cam); height: var(--gp-laptop-cam); transform: translateX(-50%);
+  border-radius: var(--radius-full); background: var(--color-bg-media);
+}
+.gp-laptop .gp-panel { border: 0; }
+.gp-laptop__base {
+  position: relative; align-self: stretch; margin: 0 var(--gp-laptop-overhang);
+  height: var(--gp-laptop-base-h); border-radius: var(--gp-laptop-base-radius);
+  background: linear-gradient(var(--color-border-divider), var(--color-border-default));
+  box-shadow: var(--gp-laptop-shadow);
+}
+.gp-laptop__base::before {
+  content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: var(--gp-laptop-notch-w); height: var(--gp-laptop-notch-h);
+  border-radius: 0 0 var(--gp-laptop-notch-h) var(--gp-laptop-notch-h); background: var(--color-border-default);
+}
+
 /* Серая полоса вместо данных кабинета, пока их нет (TODO.md) */
 .gp-skeleton { display: inline-block; vertical-align: middle; width: var(--gp-skeleton-w); height: var(--gp-skeleton-h); background: var(--color-bg-placeholder); }
 

@@ -112,4 +112,16 @@
   --gp-portal-progress: 64%;   /* данные кабинета не переданы, см. TODO.md */
   --gp-skeleton-w: 6em;        /* серая полоса вместо данных кабинета */
   --gp-skeleton-h: 0.9em;
+
+  /* мокап ноутбука вокруг панели кабинета (в эталоне нет, предложение) */
+  --gp-laptop-bezel: clamp(10px, 1.6vw, 20px);  /* рамка экрана */
+  --gp-laptop-chin: clamp(14px, 2vw, 26px);     /* рамка под экраном */
+  --gp-laptop-radius: 18px;                      /* углы крышки */
+  --gp-laptop-cam: 6px;                          /* камера */
+  --gp-laptop-base-h: 16px;                      /* корпус */
+  --gp-laptop-base-radius: 0 0 14px 14px;
+  --gp-laptop-notch-w: 18%;                      /* выемка для открытия */
+  --gp-laptop-notch-h: 6px;
+  --gp-laptop-overhang: -8%;                     /* корпус шире крышки */
+  --gp-laptop-shadow: 0 30px 40px -20px rgba(22, 23, 26, 0.35);
 }

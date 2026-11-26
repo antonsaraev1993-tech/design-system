@@ -8,7 +8,9 @@
 .gp-project__media { position: relative; }
 .gp-project__badge { position: absolute; top: var(--space-inline-md); left: var(--space-inline-md); }
 .gp-project__body { display: flex; flex-direction: column; gap: var(--gp-space-xs); }
-.gp-project__title { font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--type-h4-size); line-height: var(--type-h4-lh); }
+.gp-project__title { font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--type-h4-size); line-height: var(--type-h4-lh);
+  min-height: calc(var(--type-h4-size) * var(--type-h4-lh) * 2); /* всегда место под две строки: карточки в ряду одной высоты */
+}
 .gp-project__meta {
   display: flex; flex-wrap: wrap; gap: var(--gp-space-lg); padding-top: var(--space-inline-sm);
   border-top: var(--border-thin) solid var(--color-border-divider);
