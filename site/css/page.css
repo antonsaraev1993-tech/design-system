@@ -70,7 +70,11 @@
   width: var(--gp-laptop-cam); height: var(--gp-laptop-cam); transform: translateX(-50%);
   border-radius: var(--radius-full); background: var(--color-bg-media);
 }
-.gp-laptop .gp-panel { border: 0; }
+.gp-laptop .gp-panel { border: 0; padding: var(--gp-laptop-panel-pad); }
+.gp-laptop .gp-panel__money > div { padding: var(--gp-laptop-panel-pad); }
+.gp-laptop .gp-skeleton { max-width: 100%; }
+/* В тёмной теме фон панели = bg-media, кадр камеры иначе с ним сливается */
+[data-theme="dark"] .gp-laptop .gp-placeholder--dark { background: var(--color-bg-inverse); }
 .gp-laptop__base {
   position: relative; align-self: stretch; margin: 0 var(--gp-laptop-overhang);
   height: var(--gp-laptop-base-h); border-radius: var(--gp-laptop-base-radius);

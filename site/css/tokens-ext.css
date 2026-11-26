@@ -123,5 +123,31 @@
   --gp-laptop-notch-w: 18%;                      /* выемка для открытия */
   --gp-laptop-notch-h: 6px;
   --gp-laptop-overhang: -8%;                     /* корпус шире крышки */
+  --gp-laptop-panel-pad: clamp(12px, 2.4vw, 28px);  /* отступ панели внутри экрана, адаптив: на 1440 px 28px */
   --gp-laptop-shadow: 0 30px 40px -20px rgba(22, 23, 26, 0.35);
+}
+
+/* ---------- Тёмная тема (переключатель в шапке, js/theme.js) ----------
+   Новых цветов нет: светлые токены получают значения из той же палитры tokens.css
+   (bg-inverse, bg-media, border-divider-inverse, text-inverse*). Тёмные блоки не меняются. */
+:root {
+  --gp-btn-primary-bg: var(--color-accent-ink);  /* фон основной кнопки: белый текст 5.2:1 */
+  --gp-theme-dot: 12px;                           /* точка переключателя темы */
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg-page: #0A0A0A;
+  --color-bg-surface: #2A2B2E;
+  --color-bg-surface-2: #3A3B3F;
+  --color-bg-track: #3A3B3F;
+  --color-bg-placeholder: #3A3B3F;
+  --color-bg-disabled: #3A3B3F;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #CFCFCF;
+  --color-text-muted: #A3A3A3;
+  --color-border-divider: #3A3B3F;
+  --color-border-default: #5E5A52;
+  --color-border-strong: #FFFFFF;
+  --color-accent-ink: #FF7A1A;     /* текст-акцент на тёмном: 7.6:1 */
+  --gp-btn-primary-bg: #C2410C;    /* кнопка остаётся тёмно-оранжевой, чтобы белый текст читался */
 }

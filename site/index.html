@@ -6,6 +6,7 @@
 <title>Главподряд: главная (концепт редизайна)</title>
 <meta name="description" content="Концепт редизайна главной glavpodryad.pro. Не официальный сайт компании.">
 <meta name="robots" content="noindex, nofollow">
+<script>/* тема до отрисовки, чтобы не мигало */try{if(localStorage.getItem("gp-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
@@ -29,45 +30,54 @@
 <link rel="stylesheet" href="css/components/footer.css">
 <link rel="stylesheet" href="css/page.css">
 <script src="js/menu.js" defer></script>
+<script src="js/header.js" defer></script>
 <script src="js/form.js" defer></script>
+<script src="js/theme.js" defer></script>
 </head>
 <body>
-<a class="gp-skip" href="#main">К содержимому</a>
+<a class="gp-skip" href="#main">К&nbsp;содержимому</a>
 
 <div class="gp-concept" role="note">
-  <div class="gp-container">Концепт редизайна, не официальный сайт компании. Официальный сайт: <a href="https://glavpodryad.pro/">glavpodryad.pro</a></div>
+  <div class="gp-container">Концепт редизайна, не&nbsp;официальный сайт компании. Официальный сайт: <a href="https://glavpodryad.pro/">glavpodryad.pro</a></div>
 </div>
 
 <!-- Header -->
   <header class="gp-header gp-inverse">
+    <button class="gp-theme" type="button" aria-pressed="false" aria-label="Тёмная тема" title="Тёмная тема" hidden></button>
     <div class="gp-container gp-header__inner">
       <a class="gp-logo gp-logo--inverse" href="#top" aria-label="Главподряд, на главную" data-todo="TODO-01">
         <span class="gp-logo__mark" aria-hidden="true">Г</span><span class="gp-logo__word" aria-hidden="true">ГЛАВПОДРЯД</span>
       </a>
       <nav aria-label="Основное меню">
         <ul class="gp-header__menu">
-          <li class="gp-header__item"><a class="gp-header__link" href="#about">О компании</a></li>
+          <li class="gp-header__item"><a class="gp-header__link" href="#about">О&nbsp;компании</a></li>
           <li class="gp-header__item"><a class="gp-header__link" href="#projects">Наши объекты</a></li>
           <li class="gp-header__item">
-            <a class="gp-header__link" href="#services">Услуги</a>
-            <button class="gp-header__toggle" type="button" aria-expanded="false" aria-controls="submenu-services" aria-label="Подменю «Услуги»" hidden>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            <a class="gp-header__link gp-header__link--services" href="#services">Услуги</a>
+            <button class="gp-header__toggle" type="button" aria-expanded="false" aria-controls="submenu-services" hidden>
+              Услуги<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
             </button>
-            <ul class="gp-submenu" id="submenu-services" hidden>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/services/individual_project">Индивидуальное проектирование</a></li>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/proekty#!/tab/560488248-2">Готовые проекты</a></li>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/texnicheskij_osmotr">Технический осмотр дома перед покупкой</a></li>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/blagoustrojstvo_pridomovoj_territorii">Благоустройство придомовой территории</a></li>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/stroitelnyj_i_texnicheskij_kontrol">Технический надзор</a></li>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/services/concrete">Бетонные работы</a></li>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/services/stone">Каменные работы</a></li>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/services/roof">Кровельные работы</a></li>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/services/engineering">Инженерные коммуникации</a></li>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/services/interior">Дизайн интерьера</a></li>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/yuridicheskie-uslugi">Юридическое сопровождение</a></li>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/metallokonstrukzii">Металлоконструкции</a></li>
-              <li><a class="gp-submenu__link" href="https://glavpodryad.pro/drainage">Дренаж участка</a></li>
-            </ul>
+            <div class="gp-submenu" id="submenu-services" hidden>
+              <ul class="gp-submenu__list">
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/services/individual_project" data-preview="design">Индивидуальное проектирование</a></li>
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/proekty#!/tab/560488248-2" data-preview="ready">Готовые проекты</a></li>
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/texnicheskij_osmotr" data-preview="inspect">Технический осмотр дома перед&nbsp;покупкой</a></li>
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/blagoustrojstvo_pridomovoj_territorii" data-preview="landscape">Благоустройство придомовой территории</a></li>
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/stroitelnyj_i_texnicheskij_kontrol" data-preview="supervision">Технический надзор</a></li>
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/services/concrete" data-preview="concrete">Бетонные работы</a></li>
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/services/stone" data-preview="stone">Каменные работы</a></li>
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/services/roof" data-preview="roof">Кровельные работы</a></li>
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/services/engineering" data-preview="engineering">Инженерные коммуникации</a></li>
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/services/interior" data-preview="interior">Дизайн интерьера</a></li>
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/yuridicheskie-uslugi" data-preview="legal">Юридическое сопровождение</a></li>
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/metallokonstrukzii" data-preview="metal">Металлоконструкции</a></li>
+                <li><a class="gp-submenu__link" href="https://glavpodryad.pro/drainage" data-preview="drainage">Дренаж участка</a></li>
+              </ul>
+              <div class="gp-submenu__preview" aria-hidden="true">
+                <div class="gp-submenu__art" data-art="design"></div>
+                <p class="gp-submenu__caption">Индивидуальное проектирование</p>
+              </div>
+            </div>
           </li>
           <li class="gp-header__item"><a class="gp-header__link" href="https://glavpodryad.pro/docs">Документы</a></li>
           <li class="gp-header__item"><a class="gp-header__link" href="#contacts">Контакты</a></li>
@@ -87,11 +97,11 @@
   <section class="gp-hero" id="top">
     <div class="gp-container gp-hero__grid">
       <div class="gp-hero__col">
-        <p class="gp-overline" data-todo="TODO-14">Ростовская область · с 2006 года</p>
+        <p class="gp-overline" data-todo="TODO-14">Ростовская область · с&nbsp;2006&nbsp;года</p>
         <h1 class="gp-hero__title">Строим дома <span class="gp-hero__accent">для комфортной жизни</span></h1>
       </div>
       <div class="gp-hero__col gp-hero__col--aside">
-        <p class="gp-lead gp-hero__lead">Проектируем и строим загородные дома любой сложности в Ростовской области. Берём на себя полную ответственность за результат: от проекта до ключей.</p>
+        <p class="gp-lead gp-hero__lead">Проектируем и&nbsp;строим загородные дома любой сложности в&nbsp;Ростовской области. Берём на&nbsp;себя полную ответственность за&nbsp;результат: от&nbsp;проекта до&nbsp;ключей.</p>
         <div class="gp-actions">
           <a class="gp-btn gp-btn--primary gp-cta" href="#form">Оставить заявку</a>
           <a class="gp-btn gp-btn--outline gp-btn--inverse" href="#projects">Смотреть объекты
@@ -107,7 +117,7 @@
         <button class="gp-play" type="button" aria-label="Смотреть видео о компании" aria-describedby="video-note" disabled>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 5l11 7-11 7z"></path></svg>
         </button>
-        <span class="gp-video__caption">Как мы строим: 2 минуты о процессе</span>
+        <span class="gp-video__caption">Как&nbsp;мы строим: 2&nbsp;минуты о&nbsp;процессе</span>
       </div>
       <span class="gp-video__note" id="video-note">Видео появится позже</span>
     </div>
@@ -119,40 +129,40 @@
     <div class="gp-section-header gp-section-header--spaced">
       <div class="gp-section-header__text">
         <p class="gp-overline">Наши объекты</p>
-        <h2 class="gp-section-header__title">Спроектируем и построим дом вашей мечты</h2>
+        <h2 class="gp-section-header__title">Спроектируем и&nbsp;построим дом вашей мечты</h2>
       </div>
       <a class="gp-btn gp-btn--link" href="https://glavpodryad.pro/proekty">Все объекты
         <svg class="gp-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
     </div>
     <ul class="gp-projects">
       <li><a class="gp-project" href="https://glavpodryad.pro/dom_v_klassicheskom_stile">
-        <div class="gp-project__media"><div class="gp-placeholder gp-placeholder--photo" data-todo="TODO-03" aria-hidden="true"></div><span class="gp-badge gp-project__badge">Строится</span></div>
-        <div class="gp-project__body"><h3 class="gp-project__title">Дом в классическом стиле</h3>
+        <div class="gp-project__media"><div class="gp-placeholder gp-placeholder--photo gp-placeholder--house gp-placeholder--house-gable" data-todo="TODO-03" aria-hidden="true"></div><span class="gp-badge gp-project__badge">Строится</span></div>
+        <div class="gp-project__body"><h3 class="gp-project__title">Дом в&nbsp;классическом стиле</h3>
           <div class="gp-project__meta"><span><b>334</b> м²</span><span><b>2</b> этажа</span><span class="gp-project__more">Подробнее →</span></div></div>
       </a></li>
       <li><a class="gp-project" href="https://glavpodryad.pro/dom_na_sklone">
-        <div class="gp-project__media"><div class="gp-placeholder gp-placeholder--photo" data-todo="TODO-03" aria-hidden="true"></div><span class="gp-badge gp-project__badge">Построен в 2022</span></div>
-        <div class="gp-project__body"><h3 class="gp-project__title">Дом на склоне</h3>
+        <div class="gp-project__media"><div class="gp-placeholder gp-placeholder--photo gp-placeholder--house gp-placeholder--house-slope" data-todo="TODO-03" aria-hidden="true"></div><span class="gp-badge gp-project__badge">Построен в&nbsp;2022</span></div>
+        <div class="gp-project__body"><h3 class="gp-project__title">Дом на&nbsp;склоне</h3>
           <div class="gp-project__meta"><span><b>220</b> м²</span><span><b>3</b> этажа</span><span class="gp-project__more">Подробнее →</span></div></div>
       </a></li>
       <li><a class="gp-project" href="https://glavpodryad.pro/dom_v_sredizemnomorskom_stile">
-        <div class="gp-project__media"><div class="gp-placeholder gp-placeholder--photo" data-todo="TODO-03" aria-hidden="true"></div><span class="gp-badge gp-project__badge">Построен в 2020</span></div>
-        <div class="gp-project__body"><h3 class="gp-project__title">Дом в средиземноморском стиле</h3>
+        <div class="gp-project__media"><div class="gp-placeholder gp-placeholder--photo gp-placeholder--house gp-placeholder--house-low" data-todo="TODO-03" aria-hidden="true"></div><span class="gp-badge gp-project__badge">Построен в&nbsp;2020</span></div>
+        <div class="gp-project__body"><h3 class="gp-project__title">Дом в&nbsp;средиземноморском стиле</h3>
           <div class="gp-project__meta"><span><b>226</b> м²</span><span><b>1</b> этаж</span><span class="gp-project__more">Подробнее →</span></div></div>
       </a></li>
       <li><a class="gp-project" href="https://glavpodryad.pro/dom_v_sovremennom_stile">
-        <div class="gp-project__media"><div class="gp-placeholder gp-placeholder--photo" data-todo="TODO-03" aria-hidden="true"></div><span class="gp-badge gp-project__badge">Построен в 2021</span></div>
-        <div class="gp-project__body"><h3 class="gp-project__title">Дом в современном стиле</h3>
+        <div class="gp-project__media"><div class="gp-placeholder gp-placeholder--photo gp-placeholder--house gp-placeholder--house-flat" data-todo="TODO-03" aria-hidden="true"></div><span class="gp-badge gp-project__badge">Построен в&nbsp;2021</span></div>
+        <div class="gp-project__body"><h3 class="gp-project__title">Дом в&nbsp;современном стиле</h3>
           <div class="gp-project__meta"><span><b>497</b> м²</span><span><b>2</b> этажа</span><span class="gp-project__more">Подробнее →</span></div></div>
       </a></li>
       <li><a class="gp-project" href="https://glavpodryad.pro/sovremennyj_gorodskoj_kottedzh">
-        <div class="gp-project__media"><div class="gp-placeholder gp-placeholder--photo" data-todo="TODO-03" aria-hidden="true"></div><span class="gp-badge gp-project__badge">Построен в 2023</span></div>
+        <div class="gp-project__media"><div class="gp-placeholder gp-placeholder--photo gp-placeholder--house gp-placeholder--house-flat" data-todo="TODO-03" aria-hidden="true"></div><span class="gp-badge gp-project__badge">Построен в&nbsp;2023</span></div>
         <div class="gp-project__body"><h3 class="gp-project__title">Современный городской коттедж</h3>
           <div class="gp-project__meta"><span><b>201</b> м²</span><span><b>2</b> этажа</span><span class="gp-project__more">Подробнее →</span></div></div>
       </a></li>
       <li><a class="gp-project" href="https://glavpodryad.pro/zagorodnyj_dom_s_banej">
-        <div class="gp-project__media"><div class="gp-placeholder gp-placeholder--photo" data-todo="TODO-03" aria-hidden="true"></div><span class="gp-badge gp-project__badge">Построен в 2021</span></div>
-        <div class="gp-project__body"><h3 class="gp-project__title">Загородный дом с баней</h3>
+        <div class="gp-project__media"><div class="gp-placeholder gp-placeholder--photo gp-placeholder--house gp-placeholder--house-banya" data-todo="TODO-03" aria-hidden="true"></div><span class="gp-badge gp-project__badge">Построен в&nbsp;2021</span></div>
+        <div class="gp-project__body"><h3 class="gp-project__title">Загородный дом с&nbsp;баней</h3>
           <div class="gp-project__meta"><span><b>172</b> м²</span><span><b>2</b> этажа</span><span class="gp-project__more">Подробнее →</span></div></div>
       </a></li>
     </ul>
@@ -163,13 +173,13 @@
     <div class="gp-about__grid">
       <div class="gp-section-header">
         <div class="gp-section-header__text">
-          <p class="gp-overline">О компании</p>
-          <h2 class="gp-section-header__title">Опытная команда архитекторов, инженеров и строителей</h2>
+          <p class="gp-overline">О&nbsp;компании</p>
+          <h2 class="gp-section-header__title">Опытная команда архитекторов, инженеров и&nbsp;строителей</h2>
         </div>
       </div>
       <div class="gp-about__text">
-        <p class="gp-lead">У нас очень высокие требования к документации и качеству строительства. Наша задача: сделать процесс стройки комфортным для клиента, без сюрпризов в смете и сроках.</p>
-        <div><a class="gp-btn gp-btn--link" href="https://glavpodryad.pro/about">Подробнее о компании
+        <p class="gp-lead">У&nbsp;нас очень высокие требования к&nbsp;документации и&nbsp;качеству строительства. Наша задача: сделать процесс стройки комфортным для&nbsp;клиента, без&nbsp;сюрпризов в&nbsp;смете и&nbsp;сроках.</p>
+        <div><a class="gp-btn gp-btn--link" href="https://glavpodryad.pro/about">Подробнее о&nbsp;компании
           <svg class="gp-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
       </div>
     </div>
@@ -187,17 +197,17 @@
       <div class="gp-section-header gp-section-header--inverse gp-section-header--spaced">
         <div class="gp-section-header__text">
           <p class="gp-overline">Наши преимущества</p>
-          <h2 class="gp-section-header__title" id="adv-title">Делаем стройку вашего дома прогнозируемой и понятной</h2>
+          <h2 class="gp-section-header__title" id="adv-title">Делаем стройку вашего дома прогнозируемой и&nbsp;понятной</h2>
         </div>
       </div>
       <ul class="gp-advantages">
-        <li class="gp-advantage"><span class="gp-advantage__n">01</span><h3 class="gp-advantage__title">Ценим ваше время</h3><p class="gp-advantage__text">Берём на себя весь путь: от проекта до сдачи дома.</p></li>
-        <li class="gp-advantage"><span class="gp-advantage__n">02</span><h3 class="gp-advantage__title">Полная ответственность</h3><p class="gp-advantage__text">Отвечаем за качество на каждом этапе работ.</p></li>
-        <li class="gp-advantage"><span class="gp-advantage__n">03</span><h3 class="gp-advantage__title">Сложные проекты</h3><p class="gp-advantage__text">Специализируемся на технически сложных домах и участках.</p></li>
-        <li class="gp-advantage"><span class="gp-advantage__n">04</span><h3 class="gp-advantage__title">Контроль строительства</h3><p class="gp-advantage__text">Ход работ виден в приложении и через видеокамеры.</p></li>
-        <li class="gp-advantage"><span class="gp-advantage__n">05</span><h3 class="gp-advantage__title">Поэтапная оплата</h3><p class="gp-advantage__text">Платите по мере выполнения работ, а не авансом за всё.</p></li>
-        <li class="gp-advantage"><span class="gp-advantage__n">06</span><h3 class="gp-advantage__title">Постоянные специалисты</h3><p class="gp-advantage__text">Свои бригады, а не случайные субподрядчики.</p></li>
-        <li class="gp-advantage"><span class="gp-advantage__n">07</span><h3 class="gp-advantage__title">Прозрачная отчётность</h3><p class="gp-advantage__text">Полный бюджет известен до начала работ, смета расписана подробно.</p></li>
+        <li class="gp-advantage"><span class="gp-advantage__n">01</span><h3 class="gp-advantage__title">Ценим ваше время</h3><p class="gp-advantage__text">Берём на&nbsp;себя весь путь: от&nbsp;проекта до&nbsp;сдачи дома.</p></li>
+        <li class="gp-advantage"><span class="gp-advantage__n">02</span><h3 class="gp-advantage__title">Полная ответственность</h3><p class="gp-advantage__text">Отвечаем за&nbsp;качество на&nbsp;каждом этапе работ.</p></li>
+        <li class="gp-advantage"><span class="gp-advantage__n">03</span><h3 class="gp-advantage__title">Сложные проекты</h3><p class="gp-advantage__text">Специализируемся на&nbsp;технически сложных домах и&nbsp;участках.</p></li>
+        <li class="gp-advantage"><span class="gp-advantage__n">04</span><h3 class="gp-advantage__title">Контроль строительства</h3><p class="gp-advantage__text">Ход работ виден в&nbsp;приложении и&nbsp;через&nbsp;видеокамеры.</p></li>
+        <li class="gp-advantage"><span class="gp-advantage__n">05</span><h3 class="gp-advantage__title">Поэтапная оплата</h3><p class="gp-advantage__text">Платите по&nbsp;мере выполнения работ, а&nbsp;не&nbsp;авансом за&nbsp;всё.</p></li>
+        <li class="gp-advantage"><span class="gp-advantage__n">06</span><h3 class="gp-advantage__title">Постоянные специалисты</h3><p class="gp-advantage__text">Свои бригады, а&nbsp;не&nbsp;случайные субподрядчики.</p></li>
+        <li class="gp-advantage"><span class="gp-advantage__n">07</span><h3 class="gp-advantage__title">Прозрачная отчётность</h3><p class="gp-advantage__text">Полный бюджет известен до&nbsp;начала работ, смета расписана подробно.</p></li>
       </ul>
     </div>
   </section>
@@ -207,16 +217,16 @@
     <div class="gp-section-header gp-section-header--spaced">
       <div class="gp-section-header__text">
         <p class="gp-overline">Услуги</p>
-        <h2 class="gp-section-header__title">С чего начать</h2>
+        <h2 class="gp-section-header__title">С&nbsp;чего начать</h2>
       </div>
     </div>
     <div class="gp-services">
-      <a class="gp-service" href="https://glavpodryad.pro/gotovye_proekty_domov"><span class="gp-service__n">01</span><h3 class="gp-service__title">Готовые проекты домов</h3><p class="gp-service__text">Проверенные проекты: дешевле в проектировании и быстрее в строительстве.</p><span class="gp-service__cta">Выбрать проект →</span></a>
-      <a class="gp-service" href="https://glavpodryad.pro/services/individual_project"><span class="gp-service__n">02</span><h3 class="gp-service__title">Индивидуальное проектирование</h3><p class="gp-service__text">Проект под ваш участок, семью и образ жизни, с учётом всех пожеланий.</p><span class="gp-service__cta">Подробнее →</span></a>
-      <a class="gp-service gp-service--inverse" href="https://glavpodryad.pro/proekty"><span class="gp-service__n">03</span><h3 class="gp-service__title">Строительство дома</h3><p class="gp-service__text">От фундамента до инженерии и благоустройства участка.</p><span class="gp-service__cta">Смотреть все проекты →</span></a>
+      <a class="gp-service" href="https://glavpodryad.pro/gotovye_proekty_domov"><span class="gp-service__n">01</span><h3 class="gp-service__title">Готовые проекты домов</h3><p class="gp-service__text">Проверенные проекты: дешевле в&nbsp;проектировании и&nbsp;быстрее в&nbsp;строительстве.</p><span class="gp-service__cta">Выбрать проект →</span></a>
+      <a class="gp-service" href="https://glavpodryad.pro/services/individual_project"><span class="gp-service__n">02</span><h3 class="gp-service__title">Индивидуальное проектирование</h3><p class="gp-service__text">Проект под&nbsp;ваш участок, семью и&nbsp;образ жизни, с&nbsp;учётом всех пожеланий.</p><span class="gp-service__cta">Подробнее →</span></a>
+      <a class="gp-service gp-service--inverse" href="https://glavpodryad.pro/proekty"><span class="gp-service__n">03</span><h3 class="gp-service__title">Строительство дома</h3><p class="gp-service__text">От&nbsp;фундамента до&nbsp;инженерии и&nbsp;благоустройства участка.</p><span class="gp-service__cta">Смотреть все проекты →</span></a>
     </div>
     <ul class="gp-chips gp-services__extra">
-      <li><a class="gp-chip gp-service-chip" href="https://glavpodryad.pro/texnicheskij_osmotr">Технический осмотр дома перед покупкой</a></li>
+      <li><a class="gp-chip gp-service-chip" href="https://glavpodryad.pro/texnicheskij_osmotr">Технический осмотр дома перед&nbsp;покупкой</a></li>
       <li><a class="gp-chip gp-service-chip" href="https://glavpodryad.pro/blagoustrojstvo_pridomovoj_territorii">Благоустройство придомовой территории</a></li>
       <li><a class="gp-chip gp-service-chip" href="https://glavpodryad.pro/stroitelnyj_i_texnicheskij_kontrol">Технический надзор</a></li>
       <li><a class="gp-chip gp-service-chip" href="https://glavpodryad.pro/services/concrete">Бетонные работы</a></li>
@@ -237,16 +247,16 @@
         <div class="gp-section-header">
           <div class="gp-section-header__text">
             <p class="gp-overline">Личный кабинет</p>
-            <h2 class="gp-section-header__title" id="portal-title">Полный контроль стройки через приложение</h2>
+            <h2 class="gp-section-header__title" id="portal-title">Полный контроль стройки через&nbsp;приложение</h2>
           </div>
         </div>
-        <p class="gp-portal__lead">После подписания договора вы получаете личный кабинет и видите всё, что происходит на объекте.</p>
+        <p class="gp-portal__lead">После&nbsp;подписания договора вы получаете личный кабинет и&nbsp;видите всё, что&nbsp;происходит на&nbsp;объекте.</p>
         <ul class="gp-checklist">
           <li class="gp-check"><svg class="gp-check__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"></path></svg><span>Движение денежных средств</span></li>
           <li class="gp-check"><svg class="gp-check__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"></path></svg><span>Приёмка выполненных работ</span></li>
-          <li class="gp-check"><svg class="gp-check__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"></path></svg><span>Отчёты о расходах и аналитика</span></li>
-          <li class="gp-check"><svg class="gp-check__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"></path></svg><span>Фото и видео со стройки, онлайн-камеры</span></li>
-          <li class="gp-check"><svg class="gp-check__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"></path></svg><span>График остатков по смете</span></li>
+          <li class="gp-check"><svg class="gp-check__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"></path></svg><span>Отчёты о&nbsp;расходах и&nbsp;аналитика</span></li>
+          <li class="gp-check"><svg class="gp-check__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"></path></svg><span>Фото и&nbsp;видео со&nbsp;стройки, онлайн-камеры</span></li>
+          <li class="gp-check"><svg class="gp-check__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"></path></svg><span>График остатков по&nbsp;смете</span></li>
         </ul>
         <div><a class="gp-btn gp-btn--primary gp-cta" href="#form">Оставить заявку</a></div>
       </div>
@@ -264,7 +274,7 @@
             </div>
             <div class="gp-panel__money" aria-hidden="true">
               <div><div class="gp-panel__label">Оплачено</div><div class="gp-panel__value"><span class="gp-skeleton"></span> ₽</div></div>
-              <div><div class="gp-panel__label">Остаток по смете</div><div class="gp-panel__value"><span class="gp-skeleton"></span> ₽</div></div>
+              <div><div class="gp-panel__label">Остаток по&nbsp;смете</div><div class="gp-panel__value"><span class="gp-skeleton"></span> ₽</div></div>
             </div>
             <div class="gp-panel__thumbs" aria-hidden="true" data-todo="TODO-10">
               <div class="gp-placeholder gp-placeholder--thumb"></div>
@@ -296,7 +306,7 @@
     <div class="gp-section-header">
       <div class="gp-section-header__text">
         <p class="gp-overline">Блог</p>
-        <h2 class="gp-section-header__title">Актуальные вопросы по строительству в нашем блоге</h2>
+        <h2 class="gp-section-header__title">Актуальные вопросы по&nbsp;строительству в&nbsp;нашем блоге</h2>
       </div>
       <a class="gp-btn gp-btn--link" href="https://glavpodryad.pro/blog">Смотреть все статьи
         <svg class="gp-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
@@ -325,17 +335,17 @@
       <form class="gp-form" id="lead-form" novalidate data-todo="TODO-12">
         <div>
           <h3 class="gp-form__title">Бесплатная консультация</h3>
-          <p class="gp-form__intro">Остались вопросы? Оставьте заявку, перезвоним в течение рабочего дня.</p>
+          <p class="gp-form__intro">Остались вопросы? Оставьте заявку, перезвоним в&nbsp;течение рабочего дня.</p>
         </div>
         <label class="gp-field" for="f-name">Имя
           <input class="gp-field__control" id="f-name" name="Name" type="text" placeholder="Как к вам обращаться" autocomplete="name" required aria-describedby="f-name-err">
-          <span class="gp-field__error" id="f-name-err" hidden>Напишите, как к вам обращаться</span>
+          <span class="gp-field__error" id="f-name-err" hidden>Напишите, как&nbsp;к&nbsp;вам обращаться</span>
         </label>
         <label class="gp-field" for="f-phone">Телефон
           <input class="gp-field__control" id="f-phone" name="Phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" inputmode="tel" required aria-describedby="f-phone-err">
-          <span class="gp-field__error" id="f-phone-err" hidden>Укажите номер телефона полностью, 10 цифр после +7</span>
+          <span class="gp-field__error" id="f-phone-err" hidden>Укажите номер телефона полностью, 10&nbsp;цифр после&nbsp;+7</span>
         </label>
-        <label class="gp-field" for="f-plan">Что планируете
+        <label class="gp-field" for="f-plan">Что&nbsp;планируете
           <select class="gp-field__control" id="f-plan" name="formservices[]">
             <option>Строительство дома</option>
             <option>Индивидуальный проект</option>
@@ -360,7 +370,7 @@
       </a>
       <nav aria-label="Меню в подвале">
         <ul class="gp-footer__menu">
-          <li><a class="gp-footer__link" href="#about">О компании</a></li>
+          <li><a class="gp-footer__link" href="#about">О&nbsp;компании</a></li>
           <li><a class="gp-footer__link" href="#services">Услуги</a></li>
           <li><a class="gp-footer__link" href="#projects">Проекты</a></li>
           <li><a class="gp-footer__link" href="#contacts">Контакты</a></li>
@@ -373,13 +383,13 @@
       </ul>
     </div>
     <div class="gp-footer__bottom">
-      <span>© 2026 Главподряд</span>
+      <span>© 2026&nbsp;Главподряд</span>
       <ul class="gp-footer__legal">
         <li><a class="gp-footer__legal-link" href="https://glavpodryad.pro/politika-konfidenczialnosti">Политика конфиденциальности</a></li>
         <li><a class="gp-footer__legal-link" href="https://glavpodryad.pro/rekvizity">Реквизиты</a></li>
         <li><a class="gp-footer__legal-link" href="https://glavpodryad.pro/docs">Документы</a></li>
         <li><a class="gp-footer__legal-link" href="https://glavpodryad.pro/dogovor_publichnoj_oferty">Договор публичной оферты</a></li>
-        <li><a class="gp-footer__legal-link" href="https://glavpodryad.pro/soglashenie_ob_obrabotke_dannyx">Соглашение об обработке персональных данных</a></li>
+        <li><a class="gp-footer__legal-link" href="https://glavpodryad.pro/soglashenie_ob_obrabotke_dannyx">Соглашение об&nbsp;обработке персональных данных</a></li>
       </ul>
     </div>
   </div>

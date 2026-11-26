@@ -1,0 +1,3 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120"><!-- двухэтажный, двускатная крыша -->
+<path fill-rule="evenodd" d="M48 50 L100 18 L152 50 Z M56 50 H144 V112 H56 Z M68 60 h18 v16 h-18 Z M114 60 h18 v16 h-18 Z M68 88 h18 v16 h-18 Z M114 88 h18 v24 h-18 Z M92 60 h16 v16 h-16 Z"/>
+<rect x="124" y="24" width="10" height="18"/><rect x="0" y="112" width="200" height="2"/></svg>

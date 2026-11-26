@@ -34,7 +34,7 @@
     if (!okPhone) { phone.focus(); return; }
 
     send(new FormData(form)).then(function () {
-      status.textContent = "Это концепт сайта, заявка не отправлена. Чтобы связаться с компанией, позвоните: +7 (863) 209-84-64.";
+      status.textContent = "Это концепт сайта, заявка не\u00a0отправлена. Чтобы связаться с\u00a0компанией, позвоните: +7 (863) 209-84-64.";
       status.hidden = false;
     });
   });
