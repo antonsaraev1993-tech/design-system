@@ -1,0 +1,18 @@
+/* Сгенерировано scripts/tokens_css.py из tokens/tokens.json. Не править вручную. */
+:root {
+  --color-accent: #C8102E;
+  --color-text: #1A1A1A;
+  --color-text-muted: #6B6B6B;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F4F2EE;
+  --font-size-stat: 48px;
+  --font-size-h2: 36px;
+  --font-size-body: 17px;
+  --font-size-caption: 14px;
+  --space-section: 120px;
+  --space-stack-lg: 32px;
+  --space-stack-sm: 12px;
+  --space-page-x: 40px;
+  --size-container-max: 1280px;
+  --radius-card: 8px;
+}

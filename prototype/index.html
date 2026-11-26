@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Прототип главной</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="tokens.css">
+<style>
+/*
+  Прототип главной по решениям D-001…D-003.
+  Все цвета, размеры шрифтов, отступы и радиусы — только переменные из tokens.css
+  (генерируется из tokens/tokens.json). Числа ниже, которых нет в токенах, взяты
+  из composition/ (12 и 4 колонки, 3 карточки в ряд, текст не шире 8 колонок).
+  Пробелы в токенах отмечены в README прототипа.
+*/
+body {
+  margin: 0;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-body);
+  font-family: system-ui, sans-serif; /* токена семейства шрифтов нет, см. README прототипа */
+}
+.container {
+  max-width: var(--size-container-max);
+  margin: 0 auto;
+  padding-left: max(var(--space-page-x), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-page-x), env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+}
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-stack-lg); }
+.text { grid-column: span 8; display: grid; gap: var(--space-stack-sm); }
+section { padding-block: var(--space-section); }
+section.alt { background: var(--color-surface-alt); }
+.stack { display: grid; gap: var(--space-stack-lg); }
+.stack-sm { display: grid; gap: var(--space-stack-sm); }
+h1, h2, h3, p { margin: 0; }
+h1, h2 { font-size: var(--font-size-h2); text-wrap: balance; }
+h3 { font-size: var(--font-size-body); }
+.muted { color: var(--color-text-muted); }
+.caption { font-size: var(--font-size-caption); color: var(--color-text-muted); }
+.todo { color: var(--color-text-muted); font-size: var(--font-size-caption); }
+
+/* button */
+.btn { display: inline-block; font-size: var(--font-size-body); border-radius: var(--radius-card);
+  padding: var(--space-stack-sm) var(--space-stack-lg); text-decoration: none; cursor: pointer; }
+.btn-primary { background: var(--color-accent); color: var(--color-surface); }
+.btn-link { color: var(--color-text); padding: 0; text-decoration: underline; }
+.btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.cta { display: grid; gap: var(--space-stack-sm); justify-items: start; }
+
+/* заглушки для неизменённых блоков и материалов сайта */
+.ph { background: var(--color-surface-alt); border-radius: var(--radius-card); color: var(--color-text-muted);
+  font-size: var(--font-size-caption); display: grid; place-items: center; text-align: center;
+  padding: var(--space-stack-lg); }
+section.alt .ph { background: var(--color-surface); }
+.ph-video { aspect-ratio: 16 / 9; max-width: 100%; }
+.ph-photo { aspect-ratio: 4 / 3; max-width: 100%; }
+
+/* пометки: какое решение отвечает за блок */
+.note { justify-self: start; font-size: var(--font-size-caption); color: var(--color-text-muted);
+  background: var(--color-surface-alt); border-radius: var(--radius-card); padding: var(--space-stack-sm); }
+section.alt .note { background: var(--color-surface); }
+body.notes-off .note { display: none; }
+.bar { background: var(--color-surface-alt); padding-block: var(--space-stack-sm); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 1; }
+.bar .container { display: flex; flex-wrap: wrap; gap: var(--space-stack-sm); justify-content: space-between; align-items: center; }
+.bar button { font: inherit; font-size: var(--font-size-caption); background: var(--color-surface); color: var(--color-text);
+  border: 0; border-radius: var(--radius-card); padding: var(--space-stack-sm); cursor: pointer; }
+
+/* hero */
+.hero .media { grid-column: span 12; }
+.hero .text { grid-column: span 8; }
+
+/* stat (D-002) */
+.stats { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-stack-lg); }
+.stat { grid-column: span 4; display: grid; gap: var(--space-stack-sm); }
+.stat .value { font-size: var(--font-size-stat); color: var(--color-accent); font-weight: 600; }
+.stat .label { font-size: var(--font-size-caption); color: var(--color-text-muted); }
+
+/* timeline (D-001) */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-stack-lg); counter-reset: step; }
+.timeline li { counter-increment: step; display: grid; gap: var(--space-stack-sm); align-content: start; min-width: 0; }
+.timeline li::before { content: counter(step); font-size: var(--font-size-h2); color: var(--color-accent); font-weight: 600; }
+.timeline .lk { font-size: var(--font-size-caption); color: var(--color-text); background: var(--color-surface); border-radius: var(--radius-card); padding: var(--space-stack-sm); }
+
+/* project-card + price-range (D-003) */
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-stack-lg); }
+.card { background: var(--color-surface); border-radius: var(--radius-card); display: grid; gap: var(--space-stack-sm); align-content: start; overflow: hidden; min-width: 0; }
+.card .ph { border-radius: 0; }
+.card .body { display: grid; gap: var(--space-stack-sm); padding: 0 var(--space-stack-sm) var(--space-stack-lg); }
+.price { display: grid; gap: 0; }
+.price .from { font-size: var(--font-size-h2); color: var(--color-text); font-weight: 600; }
+.price .incl { font-size: var(--font-size-caption); color: var(--color-text-muted); }
+.card .price .from { font-size: var(--font-size-body); }
+.factors { margin: 0; padding-left: var(--space-stack-lg); display: grid; gap: var(--space-stack-sm); }
+
+/* контакты */
+.contacts { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-stack-lg); }
+.contacts > div { grid-column: span 4; display: grid; gap: var(--space-stack-sm); align-content: start; }
+
+/* mobile: 4 колонки (composition/grid). Точки перелома в токенах нет, см. README прототипа */
+@media (max-width: 760px) {
+  .grid, .stats, .contacts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .text, .hero .text, .hero .media, .stat, .contacts > div { grid-column: span 4; }
+  .timeline { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="container">
+    <span class="caption">Прототип главной по решениям D-001…D-003 · учебный разбор</span>
+    <button type="button" id="toggle-notes" aria-pressed="true">Скрыть пометки</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container stack">
+    <span class="note">D-002: «с 2006 года» убрано, цифр о компании в первом экране нет</span>
+    <div class="grid">
+      <div class="media ph ph-video">Видео реальных объектов · сохраняется (invariants: must_keep, уточнить у клиента)</div>
+      <div class="text">
+        <h1>Строительство загородных домов под ключ в Ростовской области</h1>
+        <p class="muted">Ответственность за результат, прозрачность бюджета и хода работ.</p>
+      </div>
+    </div>
+    <span class="note">Кнопка первого экрана: решения пока нет, P-004 для hero открыта</span>
+  </div>
+</section>
+
+<!-- ОБЪЕКТЫ (без изменений) -->
+<section class="alt">
+  <div class="container stack">
+    <h2>Объекты</h2>
+    <div class="ph" style="min-height: calc(var(--space-section) * 2)">Блок «Объекты» без изменений: фото и видео построенных домов с сайта</div>
+  </div>
+</section>
+
+<!-- ПРОЦЕСС (D-001) -->
+<section>
+  <div class="container stack">
+    <span class="note">D-001 · process-timeline: вместо сетки из семи преимуществ</span>
+    <div class="grid"><div class="text">
+      <h2>Как строим: от заявки до ключей</h2>
+      <p class="todo">[уточнить у клиента: сроки каждого этапа]</p>
+    </div></div>
+    <ol class="timeline">
+      <li><h3>Заявка и выезд на участок</h3></li>
+      <li><h3>Проект и смета</h3><p class="muted">Полный бюджет до старта</p></li>
+      <li><h3>Договор и поэтапная оплата</h3></li>
+      <li><h3>Строительство</h3><p class="muted">Постоянные бригады</p><span class="lk">Фото- и видеоотчёты в личном кабинете</span></li>
+      <li><h3>Приёмка этапов</h3><span class="lk">Приёмка в личном кабинете</span></li>
+      <li><h3>Сдача дома</h3></li>
+    </ol>
+    <div class="cta">
+      <a class="btn btn-primary" href="#smeta" id="cta-process">Получить смету под ваш участок</a>
+      <span class="caption">[уточнить у клиента: кто перезванивает и за какое время]</span>
+    </div>
+  </div>
+</section>
+
+<!-- ГОТОВЫЕ ПРОЕКТЫ (D-003) -->
+<section class="alt">
+  <div class="container stack">
+    <span class="note">D-003 · price-anchor: цена «от» второй строкой после названия</span>
+    <h2>Готовые проекты</h2>
+    <div class="cards">
+      <article class="card">
+        <div class="ph ph-photo">Фото своего объекта (не сток)</div>
+        <div class="body">
+          <h3>[Проект 1, уточнить у клиента]</h3>
+          <div class="price"><span class="from">от [уточнить] ₽ за дом под ключ</span></div>
+          <span class="caption">Площадь [уточнить] м²</span>
+          <a class="btn btn-link" href="#">Состав и цена проекта</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="ph ph-photo">Фото своего объекта (не сток)</div>
+        <div class="body">
+          <h3>[Проект 2, уточнить у клиента]</h3>
+          <div class="price"><span class="from">от [уточнить] ₽ за дом под ключ</span></div>
+          <span class="caption">Площадь [уточнить] м²</span>
+          <a class="btn btn-link" href="#">Состав и цена проекта</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="ph ph-photo">Фото своего объекта (не сток)</div>
+        <div class="body">
+          <h3>[Проект 3, уточнить у клиента]</h3>
+          <div class="price"><span class="from">от [уточнить] ₽ за дом под ключ</span></div>
+          <span class="caption">Площадь [уточнить] м²</span>
+          <a class="btn btn-link" href="#">Состав и цена проекта</a>
+        </div>
+      </article>
+    </div>
+    <p class="todo">Единица цены «за дом под ключ» или «за м²»: [уточнить у клиента]</p>
+  </div>
+</section>
+
+<!-- БЮДЖЕТ И СМЕТА (D-003) -->
+<section id="smeta">
+  <div class="container stack">
+    <span class="note">D-003 · заголовок → цифра → пояснение → действие (composition/hierarchy)</span>
+    <div class="grid"><div class="text stack">
+      <h2>Полный бюджет до старта</h2>
+      <div class="price">
+        <span class="from">Дом под ключ — от [уточнить] ₽</span>
+        <span class="incl">Что входит: [уточнить у клиента]</span>
+      </div>
+      <div class="stack-sm">
+        <h3>Что влияет на итог</h3>
+        <ul class="factors">
+          <li class="todo">[уточнить у клиента: фактор 1]</li>
+          <li class="todo">[уточнить у клиента: фактор 2]</li>
+          <li class="todo">[уточнить у клиента: фактор 3]</li>
+        </ul>
+      </div>
+      <div class="cta">
+        <a class="btn btn-primary" href="#kontakty" id="cta-smeta">Получить смету под ваш участок</a>
+        <span class="caption">[уточнить у клиента: кто перезванивает и за какое время]</span>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<!-- О КОМПАНИИ (D-002) -->
+<section class="alt">
+  <div class="container stack">
+    <span class="note">D-002 · single-source-facts: цифры только из facts_source_of_truth, каждая один раз. «6+ лет опыта» убрано</span>
+    <h2>О компании</h2>
+    <div class="stats">
+      <div class="stat"><span class="value">100+</span><span class="label">домов построено</span></div>
+      <div class="stat"><span class="value">6+</span><span class="label">бригад</span></div>
+      <div class="stat"><span class="value">90+</span><span class="label">клиентов</span></div>
+    </div>
+    <p class="todo">Год основания не выводится: [уточнить у клиента: 2006 или позже]</p>
+  </div>
+</section>
+
+<!-- ПАРТНЁРЫ (без изменений, P-005 открыта) -->
+<section>
+  <div class="container stack">
+    <span class="note">P-005 открыта: паттерн client-story пока proposed, решения нет</span>
+    <h2>Партнёры</h2>
+    <div class="ph" style="min-height: var(--space-section)">Блок «Партнёры» без изменений</div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section class="alt" id="kontakty">
+  <div class="container stack">
+    <span class="note">Форма заявки: решения пока нет (P-004 для формы открыта). Каналы связи сохраняются (must_keep)</span>
+    <h2>Контакты</h2>
+    <div class="contacts">
+      <div><h3>Телефон, WhatsApp, Telegram</h3><span class="todo">[номер и ссылки с сайта]</span></div>
+      <div><h3>Офис</h3><span>Ростов-на-Дону, пр. Кировский, 53</span></div>
+      <div><h3>Часы работы</h3><span>Пн–Сб 9:00–20:00</span></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var btn = document.getElementById("toggle-notes");
+    btn.addEventListener("click", function () {
+      var off = document.body.classList.toggle("notes-off");
+      btn.textContent = off ? "Показать пометки" : "Скрыть пометки";
+      btn.setAttribute("aria-pressed", off ? "false" : "true");
+    });
+  })();
+</script>
+</body>
+</html>
