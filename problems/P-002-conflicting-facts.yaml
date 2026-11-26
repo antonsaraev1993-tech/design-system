@@ -1,0 +1,16 @@
+id: P-002
+title: Цифры о компании противоречат друг другу
+status: open
+context: homepage / hero и «О компании»
+audience: любой посетитель, читающий страницу внимательно
+job: "Убедиться, что компания опытная и ей можно доверять деньги"
+observation: >
+  В первом экране «с 2006 года», в блоке «О компании» «6+ лет опыта».
+  Одна такая нестыковка обесценивает остальные цифры на странице.
+tags: [consistency, trust]
+severity: high
+evidence:
+  - type: expert
+    note: аудит главной, ноябрь 2026
+metric: "Все цифры на сайте берутся из invariants/brand.yaml#facts_source_of_truth"
+related: [P-005]

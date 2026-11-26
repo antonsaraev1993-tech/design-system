@@ -1,0 +1,43 @@
+# Каталог компонентов. figma и code: ссылки на источник [заполнить].
+
+button:
+  variants: [primary, secondary, link]
+  tokens: [color.accent, color.surface, font.size.body, radius.card]
+  figma: ""
+  code: ""
+
+project-card:
+  description: Карточка объекта или проекта, фото, название, площадь, цена «от»
+  tokens: [color.surface, color.text, color.text-muted, radius.card, space.stack.sm]
+  figma: ""
+  code: ""
+
+price-range:
+  description: «от … ₽» + единица + строка «что входит»
+  tokens: [color.text, color.text-muted, font.size.h2, font.size.caption]
+  figma: ""
+  code: ""
+
+stat:
+  description: Цифра + подпись. Значение только из facts_source_of_truth
+  tokens: [color.accent, font.size.stat, font.size.caption]
+  figma: ""
+  code: ""
+
+timeline:
+  description: Шаги процесса, вертикально на mobile, горизонтально на desktop
+  tokens: [color.accent, color.text, color.surface-alt, space.stack.lg]
+  figma: ""
+  code: ""
+
+form:
+  description: Короткая форма заявки с подписью о следующем шаге
+  tokens: [color.surface-alt, color.text, font.size.body, radius.card]
+  figma: ""
+  code: ""
+
+quote:
+  description: Цитата клиента с именем и объектом
+  tokens: [color.text, color.text-muted, font.size.body]
+  figma: ""
+  code: ""
