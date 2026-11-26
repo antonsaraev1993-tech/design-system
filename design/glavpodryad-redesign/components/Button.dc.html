@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Button</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/9afbdd1d3a7a2ca396776f528a834ba2">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="display: {{display}}; font-family: var(--font-body)">
+<sc-if value="{{isPrimary}}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{submit}}" hint-placeholder-val="{{ false }}">
+<button type="submit" style="width: 100%; border: 0; background: var(--color-accent); color: var(--color-accent-on); padding: 0 {{px}}; min-height: {{h}}; font: inherit; font-weight: 700; font-size: {{fs}}; cursor: pointer">{{label}}</button>
+</sc-if>
+<sc-if value="{{notSubmit}}" hint-placeholder-val="{{ true }}">
+<a href="{{href}}" style="text-decoration: none; background: var(--color-accent); color: var(--color-accent-on); padding: 0 {{px}}; min-height: {{h}}; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 600; font-size: {{fs}}; width: 100%">{{label}}<sc-if value="{{arrow}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></sc-if></a>
+</sc-if>
+</sc-if>
+<sc-if value="{{isOutline}}" hint-placeholder-val="{{ false }}">
+<a href="{{href}}" style="text-decoration: none; background: transparent; border: 1px solid {{lineColor}}; color: {{lineColor}}; padding: 0 {{px}}; min-height: {{h}}; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 600; font-size: {{fs}}; width: 100%">{{label}}<sc-if value="{{arrow}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></sc-if></a>
+</sc-if>
+<sc-if value="{{isLink}}" hint-placeholder-val="{{ false }}">
+<a href="{{href}}" style="color: {{lineColor}}; font-weight: 600; font-size: {{fs}}; display: inline-flex; align-items: center; gap: 10px; min-height: var(--size-control-sm)">{{label}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"label":{"editor":"text","default":"Оставить заявку"},"href":{"editor":"text","default":"#form"},"variant":{"editor":"enum","options":["primary","outline","link"],"default":"primary"},"size":{"editor":"enum","options":["md","sm"],"default":"md"},"inverse":{"editor":"boolean","default":false},"arrow":{"editor":"boolean","default":false},"block":{"editor":"boolean","default":false},"submit":{"editor":"boolean","default":false},"$preview":{"width":260,"height":52}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const v = this.props.variant ?? 'primary';
+    const sm = (this.props.size ?? 'md') === 'sm';
+    const inv = this.props.inverse ?? false;
+    const submit = this.props.submit ?? false;
+    return {
+      label: this.props.label ?? 'Оставить заявку',
+      href: this.props.href ?? '#form',
+      isPrimary: v === 'primary', isOutline: v === 'outline', isLink: v === 'link',
+      submit: submit, notSubmit: !submit,
+      arrow: this.props.arrow ?? false,
+      display: (this.props.block ?? false) ? 'flex' : 'inline-flex',
+      h: sm ? 'var(--size-control-sm)' : (submit ? 'var(--size-control-lg)' : 'var(--size-control-md)'),
+      px: sm ? '22px' : '28px',
+      fs: sm ? '15px' : '16px',
+      lineColor: inv ? 'var(--color-text-inverse)' : 'var(--color-text-primary)'
+    };
+  }
+}
+</script>
+</body>
+</html>

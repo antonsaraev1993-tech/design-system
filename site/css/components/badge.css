@@ -1,0 +1,6 @@
+/* Badge · свойство: label. Без иконок и цвета статуса. */
+.gp-badge {
+  display: inline-block; background: var(--color-bg-page); color: var(--color-text-primary);
+  padding: var(--gp-space-2xs) var(--gp-badge-px);
+  font-size: var(--type-caption-size); font-weight: var(--font-weight-semibold); line-height: var(--type-text-lh);
+}

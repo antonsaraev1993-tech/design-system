@@ -1,0 +1,115 @@
+/*
+  Дополнение к tokens.css. Единственное место, кроме tokens.css, где в CSS есть числа.
+
+  Часть 1 — токены, которые описаны в design-system/tokens.json, но не выгружены в tokens.css:
+  типографика, радиусы, толщины линий, size-play, size-progress. Имена по tokens.json.
+
+  Часть 2 — значения из .dc.html эталона, для которых токенов нет (префикс --gp-).
+  Это предложения в дизайн-систему, список в TODO.md. Значения совпадают с эталоном,
+  кроме трёх, помеченных «адаптив»: на 1440 px они дают тот же результат, на узких экранах меньше.
+*/
+:root {
+  /* ---------- Часть 1: из tokens.json ---------- */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --type-display-size: clamp(40px, 5.4vw, 76px);
+  --type-display-lh: 1.04;
+  --type-display-tracking: -0.02em;
+  --type-stat-size: 56px;
+  --type-stat-lh: 1;
+  --type-h2-size: clamp(30px, 3.4vw, 48px);
+  --type-h2-lh: 1.12;
+  --type-h2-tracking: -0.01em;
+  --type-h3-size: 24px;
+  --type-h3-lh: 1.25;
+  --type-h4-size: 20px;
+  --type-h4-lh: 1.25;
+  --type-logo-size: 18px;
+  --type-logo-lh: 1;
+  --type-logo-tracking: 0.02em;
+  --type-lead-size: 19px;
+  --type-body-size: 16px;
+  --type-body-sm-size: 15px;
+  --type-overline-size: 14px;
+  --type-overline-tracking: 0.12em;
+  --type-button-size: 16px;
+  --type-button-sm-size: 15px;
+  --type-label-size: 14px;
+  --type-caption-size: 13px;
+  --type-text-lh: 1.55;
+
+  --radius-none: 0px;
+  --radius-full: 999px;
+  --border-thin: 1px;
+  --border-focus: 2px;
+  --size-play: 64px;
+  --size-progress: 8px;
+
+  /* ---------- Часть 2: значения эталона без токенов (--gp-) ---------- */
+  /* отступы */
+  --gp-space-2xs: 6px;    /* Badge по вертикали */
+  --gp-space-xs: 10px;    /* зазор чипов, иконка в кнопке */
+  --gp-space-sm: 14px;    /* CheckItem, ячейка преимущества */
+  --gp-space-md: 18px;    /* карточка объекта, контакты */
+  --gp-space-lg: 20px;    /* шапка, форма */
+  --gp-space-xl: 28px;    /* меню, hero, ячейка преимущества */
+  --gp-space-2xl: 40px;   /* hero снизу, подвал снизу */
+  --gp-space-3xl: 48px;   /* отступ шапки секции до контента, сетка hero */
+  --gp-space-hero-top: 72px;
+  --gp-space-hero-bottom: 96px;
+  --gp-space-form: clamp(24px, 4vw, 56px);  /* адаптив: в эталоне 56px */
+  --gp-space-panel: 28px;                    /* панель кабинета */
+  --gp-button-px: 28px;
+  --gp-button-px-sm: 22px;
+  --gp-badge-px: 12px;
+  --gp-chip-px: 16px;
+  --gp-space-card-row: 32px;   /* зазор между рядами карточек объектов */
+
+  /* шрифт */
+  --gp-type-nav-size: 15px;
+  --gp-type-lead-sm-size: 18px;      /* абзац кабинета */
+  --gp-type-panel-title-size: 18px;  /* название объекта в панели кабинета */
+  --gp-type-money-size: 20px;
+  --gp-type-contact-h2-size: clamp(28px, 3vw, 40px);
+  --gp-type-form-title-size: 22px;
+  --gp-type-phone-lg-size: 26px;
+  --gp-type-blog-h-size: 19px;
+  --gp-type-blog-h-lh: 1.3;
+  --gp-type-panel-lh: 1.15;
+  --gp-type-contact-size: 17px;
+  --gp-tracking-wide: 0.1em;
+  --gp-underline-offset: 0.2em;
+
+  /* размеры */
+  --gp-logo-mark: 40px;
+  --gp-icon-sm: 18px;
+  --gp-icon-md: 20px;
+  --gp-icon-lg: 22px;
+  --gp-hero-video-h: clamp(260px, 39vw, 560px);  /* адаптив: в эталоне 560px */
+  --gp-photo-h: 300px;
+  --gp-cover-h: 220px;
+  --gp-thumb-h: 96px;
+  --gp-partner-h: 120px;
+  --gp-cell-min-h: 240px;
+  --gp-service-min-h: 300px;
+  --gp-text-max: 820px;
+  --gp-lead-max: 520px;
+
+  /* минимальная ширина колонок auto-fit/auto-fill */
+  --gp-col-hero: 520px;
+  --gp-col-project: 360px;
+  --gp-col-half: 480px;
+  --gp-col-stat: 240px;
+  --gp-col-advantage: 280px;
+  --gp-col-service: 340px;
+  --gp-col-partner: 200px;
+  --gp-col-contact: 460px;
+
+  /* демо-данные кабинета */
+  --gp-portal-progress: 64%;   /* данные кабинета не переданы, см. TODO.md */
+  --gp-skeleton-w: 6em;        /* серая полоса вместо данных кабинета */
+  --gp-skeleton-h: 0.9em;
+}

@@ -1,0 +1,14 @@
+/* Placeholder · свойства: label, height (модификатор), tone: fill | dark | outline.
+   Атрибут data-todo совпадает с номером в TODO.md: по нему заглушку легко найти и заменить. */
+.gp-placeholder {
+  box-sizing: border-box; width: 100%; height: var(--gp-photo-h);
+  background: var(--color-bg-placeholder); color: var(--color-text-muted);
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: var(--space-inline-sm); font-size: var(--type-caption-size);
+}
+.gp-placeholder--dark { background: var(--color-bg-media); color: var(--color-text-inverse-secondary); }
+.gp-placeholder--outline { background: transparent; border: var(--border-thin) solid var(--color-border-divider); }
+.gp-placeholder--photo { height: var(--gp-photo-h); }
+.gp-placeholder--cover { height: var(--gp-cover-h); }
+.gp-placeholder--thumb { height: var(--gp-thumb-h); }
+.gp-placeholder--logo { height: var(--gp-partner-h); }

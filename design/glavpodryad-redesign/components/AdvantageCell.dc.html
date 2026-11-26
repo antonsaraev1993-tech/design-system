@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>AdvantageCell</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/9afbdd1d3a7a2ca396776f528a834ba2">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="height: 100%; min-height: 240px; box-sizing: border-box; background: var(--color-bg-inverse); color: var(--color-text-inverse); padding: 32px 28px 36px; display: flex; flex-direction: column; gap: 14px; font-family: var(--font-body); line-height: 1.55">
+<span style="font-family: var(--font-display); font-size: 14px; color: var(--color-accent)">{{n}}</span>
+<h3 style="margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 20px; line-height: 1.25">{{heading}}</h3>
+<p style="margin: 0; color: var(--color-text-inverse-secondary); font-size: 15px">{{text}}</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"n":{"editor":"text","default":"01"},"heading":{"editor":"text","default":"Ценим ваше время"},"text":{"editor":"text","default":"Берём на себя весь путь: от проекта до сдачи дома."},"$preview":{"width":300,"height":240}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { n: this.props.n ?? '01', heading: this.props.heading ?? 'Ценим ваше время', text: this.props.text ?? 'Берём на себя весь путь: от проекта до сдачи дома.' };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+/* Основа страницы: типографика, контейнер, ритм секций, служебные классы. Только var(--…). */
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  font-size: var(--type-body-size);
+  line-height: var(--type-text-lh);
+  -webkit-text-size-adjust: 100%;
+  overflow-wrap: break-word;
+}
+[hidden] { display: none !important; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+.gp-nowrap { white-space: nowrap; }
+ul, ol { padding: 0; list-style: none; }
+img, svg, video { display: block; max-width: 100%; }
+a { text-underline-offset: var(--gp-underline-offset); }
+
+:focus-visible { outline: var(--border-focus) solid var(--color-accent-ink); outline-offset: var(--border-focus); }
+.gp-inverse :focus-visible { outline-color: var(--color-accent); }
+
+/* Контейнер: size-container + поля space-page-gutter (с учётом выреза экрана) */
+/* content-box, как в эталоне: max-width ограничивает контент, поля добавляются снаружи */
+.gp-container {
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding-left: max(var(--space-page-gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-page-gutter), env(safe-area-inset-right, 0px));
+}
+
+.gp-section { padding-top: var(--space-section); }
+.gp-section.gp-section--after-dark { padding-top: var(--space-section-dark); }
+.gp-section--dark { background: var(--color-bg-inverse); color: var(--color-text-inverse); margin-top: var(--space-section); }
+.gp-section--dark > .gp-container { padding-block: var(--space-section-dark); }
+
+/* Надзаголовок overline вне SectionHeader (hero, партнёры) */
+.gp-overline {
+  font-size: var(--type-overline-size);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--type-overline-tracking);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.gp-inverse .gp-overline { color: var(--color-text-inverse-muted); }
+
+.gp-lead { font-size: var(--type-lead-size); color: var(--color-text-secondary); }
+.gp-inverse .gp-lead { color: var(--color-text-inverse-secondary); }
+
+.gp-actions { display: flex; flex-wrap: wrap; gap: var(--space-inline-sm); }
+
+.gp-sr-only {
+  position: absolute; width: var(--border-thin); height: var(--border-thin);
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* Ссылка «к содержимому» */
+.gp-skip {
+  position: absolute; left: var(--space-inline-md); top: var(--space-inline-md); z-index: 10;
+  background: var(--color-accent); color: var(--color-accent-on);
+  padding: var(--space-inline-sm) var(--space-inline-md); font-weight: var(--font-weight-semibold);
+  transform: translateY(-200%);
+}
+.gp-skip:focus { transform: none; }
+
+/* Полоса «концепт»: демо не официальный сайт компании */
+.gp-concept {
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  font-size: var(--type-caption-size);
+  border-bottom: var(--border-thin) solid var(--color-border-divider);
+}
+.gp-concept .gp-container { padding-block: var(--space-inline-xs); }
+.gp-concept a { color: var(--color-text-primary); }

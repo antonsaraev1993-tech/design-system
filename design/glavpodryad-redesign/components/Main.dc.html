@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Главподряд: главная</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/9afbdd1d3a7a2ca396776f528a834ba2">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 100%; background: var(--color-bg-page); color: var(--color-text-primary); font-family: var(--font-body); font-size: 16px; line-height: 1.55">
+
+<!-- Header + Hero -->
+<div class="gp-inverse" style="background: var(--color-bg-inverse); color: var(--color-text-inverse); padding-bottom: 96px">
+<dc-import name="Header" hint-size="100%,84px"></dc-import>
+<section id="top" style="max-width: var(--size-container); margin: 0 auto; padding: 72px var(--space-page-gutter) 40px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 48px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 28px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-inverse-muted)">Ростовская область · с 2006 года</p>
+<h1 style="margin: 0; font-family: var(--font-display); font-weight: 500; font-size: clamp(40px, 5.4vw, 76px); line-height: 1.04; letter-spacing: -0.02em">Строим дома <span style="color: var(--color-accent)">для комфортной жизни</span></h1>
+</div>
+<div style="display: flex; flex-direction: column; gap: 28px; padding-bottom: 8px">
+<p style="margin: 0; font-size: 19px; color: var(--color-text-inverse-secondary); max-width: 520px">Проектируем и строим загородные дома любой сложности в Ростовской области. Берём на себя полную ответственность за результат: от проекта до ключей.</p>
+<div style="display: flex; flex-wrap: wrap; gap: var(--space-inline-sm)">
+<dc-import name="Button" label="Оставить заявку" href="#form" hint-size="200px,52px"></dc-import>
+<dc-import name="Button" label="Смотреть объекты" href="#projects" variant="outline" inverse="{{ true }}" arrow="{{ true }}" hint-size="240px,52px"></dc-import>
+</div>
+</div>
+</div>
+</section>
+<section aria-label="Видео о компании" style="max-width: var(--size-container); margin: 0 auto; padding: 0 var(--space-page-gutter)">
+<div style="position: relative; height: 560px; background: var(--color-bg-media); display: flex; align-items: flex-end; justify-content: space-between; padding: var(--space-page-gutter); box-sizing: border-box; flex-wrap: wrap; gap: var(--space-inline-md)">
+<div style="position: absolute; top: 32px; left: 32px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-inverse-muted)">[ Промо-видео со стройки, без звука, по кругу ]</div>
+<div style="display: flex; align-items: center; gap: var(--space-inline-md)">
+<button type="button" aria-label="Смотреть видео о компании" style="width: 64px; height: 64px; border-radius: 50%; border: 1px solid var(--color-border-inverse); background: transparent; color: var(--color-text-inverse); display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 5l11 7-11 7z"></path></svg>
+</button>
+<span style="font-weight: 600">Как мы строим: 2 минуты о процессе</span>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Projects -->
+<section id="projects" style="max-width: var(--size-container); margin: 0 auto; padding: var(--space-section-dark) var(--space-page-gutter) 0">
+<div style="margin-bottom: 48px"><dc-import name="SectionHeader" overline="Наши объекты" heading="Спроектируем и построим дом вашей мечты" link-label="Все объекты" link-href="#projects" hint-size="100%,140px"></dc-import></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 32px var(--space-gap-cards)">
+<sc-for list="{{projects}}" as="p" hint-placeholder-count="6">
+<dc-import name="ProjectCard" heading="{{p.heading}}" status="{{p.status}}" area="{{p.area}}" floors="{{p.floors}}" floors-label="{{p.floorsLabel}}" hint-size="100%,400px"></dc-import>
+</sc-for>
+</div>
+</section>
+
+<!-- About + stats -->
+<section id="about" style="max-width: var(--size-container); margin: 0 auto; padding: var(--space-section) var(--space-page-gutter) 0">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: var(--space-block); align-items: end">
+<dc-import name="SectionHeader" overline="О компании" heading="Опытная команда архитекторов, инженеров и строителей" hint-size="100%,160px"></dc-import>
+<div style="display: flex; flex-direction: column; gap: 28px">
+<p style="margin: 0; font-size: 19px; color: var(--color-text-secondary)">У нас очень высокие требования к документации и качеству строительства. Наша задача: сделать процесс стройки комфортным для клиента, без сюрпризов в смете и сроках.</p>
+<dc-import name="Button" variant="link" label="Подробнее о компании" href="#about" hint-size="240px,44px"></dc-import>
+</div>
+</div>
+<div style="margin-top: var(--space-block); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); border-top: 1px solid var(--color-border-strong)">
+<sc-for list="{{stats}}" as="s" hint-placeholder-count="4">
+<div style="padding: 28px 24px 0 0"><dc-import name="Stat" value="{{s.value}}" label="{{s.label}}" hint-size="100%,90px"></dc-import></div>
+</sc-for>
+</div>
+</section>
+
+<!-- Advantages -->
+<section style="margin-top: var(--space-section); background: var(--color-bg-inverse)">
+<div style="max-width: var(--size-container); margin: 0 auto; padding: var(--space-section-dark) var(--space-page-gutter)">
+<div style="margin-bottom: var(--space-block)"><dc-import name="SectionHeader" overline="Наши преимущества" heading="Делаем стройку вашего дома прогнозируемой и понятной" inverse="{{ true }}" hint-size="100%,140px"></dc-import></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 1px; background: var(--color-border-divider-inverse); border: 1px solid var(--color-border-divider-inverse)">
+<sc-for list="{{advantages}}" as="a" hint-placeholder-count="7">
+<dc-import name="AdvantageCell" n="{{a.n}}" heading="{{a.heading}}" text="{{a.text}}" hint-size="100%,240px"></dc-import>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- Services -->
+<section id="services" style="max-width: var(--size-container); margin: 0 auto; padding: var(--space-section) var(--space-page-gutter) 0">
+<div style="margin-bottom: 48px"><dc-import name="SectionHeader" overline="Услуги" heading="С чего начать" hint-size="100%,120px"></dc-import></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: var(--space-gap-cards)">
+<dc-import name="ServiceCard" n="01" heading="Готовые проекты домов" text="Проверенные проекты: дешевле в проектировании и быстрее в строительстве." cta="Выбрать проект" hint-size="100%,300px"></dc-import>
+<dc-import name="ServiceCard" n="02" heading="Индивидуальное проектирование" text="Проект под ваш участок, семью и образ жизни, с учётом всех пожеланий." cta="Подробнее" hint-size="100%,300px"></dc-import>
+<dc-import name="ServiceCard" n="03" heading="Строительство дома" text="От фундамента до инженерии и благоустройства участка." cta="Смотреть все проекты" href="#projects" inverse="{{ true }}" hint-size="100%,300px"></dc-import>
+</div>
+<div style="margin-top: var(--space-page-gutter); display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{extra}}" as="s" hint-placeholder-count="11"><dc-import name="Chip" label="{{s}}" hint-size="200px,44px"></dc-import></sc-for>
+</div>
+</section>
+
+<!-- Client portal -->
+<section style="max-width: var(--size-container); margin: 0 auto; padding: var(--space-section) var(--space-page-gutter) 0">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: var(--space-block); align-items: center">
+<div style="display: flex; flex-direction: column; gap: var(--space-gap-cards)">
+<dc-import name="SectionHeader" overline="Личный кабинет" heading="Полный контроль стройки через приложение" hint-size="100%,160px"></dc-import>
+<p style="margin: 0; font-size: 18px; color: var(--color-text-secondary)">После подписания договора вы получаете личный кабинет и видите всё, что происходит на объекте.</p>
+<div style="border-top: 1px solid var(--color-border-divider)">
+<sc-for list="{{portal}}" as="c" hint-placeholder-count="5"><dc-import name="CheckItem" label="{{c}}" hint-size="100%,52px"></dc-import></sc-for>
+</div>
+<div><dc-import name="Button" label="Оставить заявку" href="#form" hint-size="200px,52px"></dc-import></div>
+</div>
+<div style="background: var(--color-bg-surface); border: 1px solid var(--color-border-divider); padding: 28px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: var(--space-inline-sm); flex-wrap: wrap">
+<div><div style="font-size: 13px; color: var(--color-text-muted)">Объект</div><div style="font-family: var(--font-display); font-weight: 500; font-size: 18px">[Название объекта]</div></div>
+<dc-import name="Badge" label="Этап: [кровля]" hint-size="130px,32px"></dc-import>
+</div>
+<div>
+<div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px"><span>Готовность</span><b>[XX]%</b></div>
+<div style="height: 8px; background: var(--color-bg-track)"><div style="width: 64%; height: 8px; background: var(--color-accent)"></div></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-inline-sm)">
+<div style="background: var(--color-bg-page); padding: var(--space-inline-md)"><div style="font-size: 13px; color: var(--color-text-muted)">Оплачено</div><div style="font-weight: 700; font-size: 20px">[сумма] ₽</div></div>
+<div style="background: var(--color-bg-page); padding: var(--space-inline-md)"><div style="font-size: 13px; color: var(--color-text-muted)">Остаток по смете</div><div style="font-weight: 700; font-size: 20px">[сумма] ₽</div></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<dc-import name="Placeholder" label="[фото]" height="{{ 96 }}" hint-size="100%,96px"></dc-import>
+<dc-import name="Placeholder" label="[фото]" height="{{ 96 }}" hint-size="100%,96px"></dc-import>
+<dc-import name="Placeholder" label="● камера" height="{{ 96 }}" tone="dark" hint-size="100%,96px"></dc-import>
+</div>
+<div style="border-top: 1px solid var(--color-border-divider); padding-top: var(--space-inline-md); display: flex; justify-content: space-between; gap: var(--space-inline-sm); font-size: 14px; flex-wrap: wrap"><span>Акт приёмки: [этап]</span><span style="font-weight: 600; color: var(--color-accent-ink)">Ожидает подписи</span></div>
+</div>
+</div>
+</section>
+
+<!-- Partners -->
+<section style="max-width: var(--size-container); margin: 0 auto; padding: var(--space-section) var(--space-page-gutter) 0">
+<p style="margin: 0 0 var(--space-gap-cards); font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-muted)">Нам доверяют</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 0">
+<sc-for list="{{partners}}" as="x" hint-placeholder-count="5"><dc-import name="Placeholder" label="[логотип партнёра]" height="{{ 120 }}" tone="outline" hint-size="100%,120px"></dc-import></sc-for>
+</div>
+</section>
+
+<!-- Blog -->
+<section id="blog" style="max-width: var(--size-container); margin: 0 auto; padding: var(--space-section) var(--space-page-gutter) 0">
+<dc-import name="SectionHeader" overline="Блог" heading="Актуальные вопросы по строительству в нашем блоге" link-label="Смотреть все статьи" link-href="#blog" hint-size="100%,140px"></dc-import>
+</section>
+
+<!-- Contacts + form -->
+<section id="contacts" style="max-width: var(--size-container); margin: 0 auto; padding: var(--space-section) var(--space-page-gutter) var(--space-section-dark)">
+<div id="form" style="background: var(--color-bg-surface); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr))">
+<div style="padding: 56px; display: flex; flex-direction: column; gap: 28px; border-right: 1px solid var(--color-border-divider)">
+<h2 style="margin: 0; font-family: var(--font-display); font-weight: 500; font-size: clamp(28px, 3vw, 40px); line-height: 1.15">Доверьте нам строительство вашего дома</h2>
+<div style="display: flex; flex-direction: column; gap: 18px; font-size: 17px">
+<a href="tel:+78632098464" style="text-decoration: none; font-family: var(--font-display); font-weight: 500; font-size: 26px">+7 (863) 209-84-64</a>
+<a href="mailto:mail@glavpodryad.pro">mail@glavpodryad.pro</a>
+<div><div style="font-size: 13px; color: var(--color-text-muted)">Офис</div>Ростов-на-Дону, пр. Кировский, 53</div>
+<div><div style="font-size: 13px; color: var(--color-text-muted)">Часы работы</div>Пн–Сб 9:00–20:00, Вс выходной</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<dc-import name="Chip" label="WhatsApp" href="#contacts" hint-size="120px,44px"></dc-import>
+<dc-import name="Chip" label="Telegram" href="#contacts" hint-size="120px,44px"></dc-import>
+<dc-import name="Chip" label="VK" href="#contacts" hint-size="70px,44px"></dc-import>
+<dc-import name="Chip" label="Телефон" href="tel:+78632098464" hint-size="120px,44px"></dc-import>
+</div>
+</div>
+<form style="padding: 56px; display: flex; flex-direction: column; gap: 20px; background: var(--color-bg-surface-2)">
+<div><h3 style="margin: 0 0 8px; font-family: var(--font-display); font-weight: 500; font-size: 22px">Бесплатная консультация</h3><p style="margin: 0; color: var(--color-text-secondary)">Остались вопросы? Оставьте заявку, перезвоним в течение рабочего дня.</p></div>
+<dc-import name="Field" label="Имя" placeholder="Как к вам обращаться" hint-size="100%,86px"></dc-import>
+<dc-import name="Field" label="Телефон" type="tel" placeholder="+7 (___) ___-__-__" hint-size="100%,86px"></dc-import>
+<dc-import name="Field" label="Что планируете" kind="select" options="{{formOptions}}" hint-size="100%,86px"></dc-import>
+<dc-import name="Button" label="Отправить" submit="{{ true }}" block="{{ true }}" hint-size="100%,56px"></dc-import>
+<p style="margin: 0; font-size: 13px; color: var(--color-text-muted)">Нажимая кнопку, вы соглашаетесь с <a href="#docs">политикой конфиденциальности</a> и <a href="#docs">обработкой персональных данных</a>.</p>
+</form>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,260px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7739}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      projects: [
+        { heading: 'Дом в классическом стиле', status: 'Строится', area: '334', floors: '2', floorsLabel: 'этажа' },
+        { heading: 'Дом на склоне', status: 'Построен в 2022', area: '220', floors: '3', floorsLabel: 'этажа' },
+        { heading: 'Дом в средиземноморском стиле', status: 'Построен в 2020', area: '226', floors: '1', floorsLabel: 'этаж' },
+        { heading: 'Дом в современном стиле', status: 'Построен в 2021', area: '497', floors: '2', floorsLabel: 'этажа' },
+        { heading: 'Современный городской коттедж', status: 'Построен в 2023', area: '201', floors: '2', floorsLabel: 'этажа' },
+        { heading: 'Загородный дом с баней', status: 'Построен в 2021', area: '172', floors: '2', floorsLabel: 'этажа' }
+      ],
+      stats: [
+        { value: '100+', label: 'построенных домов' }, { value: '6+', label: 'лет опыта' },
+        { value: '6+', label: 'постоянных бригад' }, { value: '90+', label: 'счастливых клиентов' }
+      ],
+      advantages: [
+        { n: '01', heading: 'Ценим ваше время', text: 'Берём на себя весь путь: от проекта до сдачи дома.' },
+        { n: '02', heading: 'Полная ответственность', text: 'Отвечаем за качество на каждом этапе работ.' },
+        { n: '03', heading: 'Сложные проекты', text: 'Специализируемся на технически сложных домах и участках.' },
+        { n: '04', heading: 'Контроль строительства', text: 'Ход работ виден в приложении и через видеокамеры.' },
+        { n: '05', heading: 'Поэтапная оплата', text: 'Платите по мере выполнения работ, а не авансом за всё.' },
+        { n: '06', heading: 'Постоянные специалисты', text: 'Свои бригады, а не случайные субподрядчики.' },
+        { n: '07', heading: 'Прозрачная отчётность', text: 'Полный бюджет известен до начала работ, смета расписана подробно.' }
+      ],
+      extra: ['Технический осмотр дома перед покупкой', 'Благоустройство придомовой территории', 'Технический надзор', 'Бетонные работы', 'Каменные работы', 'Кровельные работы', 'Инженерные коммуникации', 'Дизайн интерьера', 'Юридическое сопровождение', 'Металлоконструкции', 'Дренаж участка'],
+      portal: ['Движение денежных средств', 'Приёмка выполненных работ', 'Отчёты о расходах и аналитика', 'Фото и видео со стройки, онлайн-камеры', 'График остатков по смете'],
+      partners: [1, 2, 3, 4, 5],
+      formOptions: ['Строительство дома', 'Индивидуальный проект', 'Готовый проект', 'Технический надзор', 'Другое']
+    };
+  }
+}
+</script>
+</body>
+</html>

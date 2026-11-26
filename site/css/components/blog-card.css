@@ -1,0 +1,5 @@
+/* BlogCard · свойства: heading, date, href. Для страницы блога, на главной не используется. */
+.gp-blog-card.gp-blog-card { display: flex; flex-direction: column; gap: var(--gp-space-sm); text-decoration: none; color: var(--color-text-primary); }
+.gp-blog-card.gp-blog-card:hover { color: var(--color-accent-ink); }
+.gp-blog-card__date { font-size: var(--type-caption-size); color: var(--color-text-muted); }
+.gp-blog-card__title { font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--gp-type-blog-h-size); line-height: var(--gp-type-blog-h-lh); }

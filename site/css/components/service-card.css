@@ -1,0 +1,19 @@
+/* ServiceCard · свойства: n, heading, text, cta, href, inverse. На главной ровно три, тёмная последняя. */
+.gp-services__extra { margin-top: var(--space-page-gutter); }
+.gp-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--gp-col-service)), 1fr)); gap: var(--space-gap-cards); }
+.gp-service.gp-service {
+  box-sizing: border-box; height: 100%; min-height: var(--gp-service-min-h); padding: var(--space-card-padding);
+  display: flex; flex-direction: column; gap: var(--space-inline-md);
+  background: var(--color-bg-surface); color: var(--color-text-primary); text-decoration: none;
+}
+.gp-service.gp-service:hover { color: var(--color-text-primary); }
+.gp-service__n { font-family: var(--font-display); font-size: var(--type-overline-size); color: var(--color-accent-ink); }
+.gp-service__title { font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--type-h3-size); line-height: var(--type-h3-lh); hyphens: auto; hyphenate-limit-chars: 12 4 4; } /* «Индивидуальное» на 390 px шире карточки */
+.gp-service__text { color: var(--color-text-secondary); }
+.gp-service__cta { margin-top: auto; font-weight: var(--font-weight-semibold); }
+.gp-service:hover .gp-service__cta { color: var(--color-accent-ink); }
+
+.gp-service.gp-service--inverse, .gp-service.gp-service--inverse:hover { background: var(--color-bg-inverse); color: var(--color-text-inverse); }
+.gp-service--inverse .gp-service__n { color: var(--color-accent); }
+.gp-service--inverse .gp-service__text { color: var(--color-text-inverse-secondary); }
+.gp-service--inverse:hover .gp-service__cta { color: var(--color-accent); }

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Badge</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/9afbdd1d3a7a2ca396776f528a834ba2">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<span style="display: inline-block; background: var(--color-bg-page); color: var(--color-text-primary); padding: 6px 12px; font-family: var(--font-body); font-size: 13px; font-weight: 600; line-height: 1.55">{{label}}</span>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"label":{"editor":"text","default":"Построен в 2022"},"$preview":{"width":160,"height":32}}'>
+class Component extends DCLogic {
+  renderVals() { return { label: this.props.label ?? 'Построен в 2022' }; }
+}
+</script>
+</body>
+</html>

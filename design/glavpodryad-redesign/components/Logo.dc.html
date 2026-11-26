@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Logo</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/9afbdd1d3a7a2ca396776f528a834ba2">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<a href="{{href}}" style="display: inline-flex; align-items: center; gap: var(--space-inline-sm); text-decoration: none; color: {{textColor}}; font-family: var(--font-display)">
+<span style="width: 40px; height: 40px; background: var(--color-accent); color: var(--color-accent-on); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px">Г</span>
+<span style="font-weight: 600; font-size: 18px; letter-spacing: 0.02em">ГЛАВПОДРЯД</span>
+</a>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"inverse":{"editor":"boolean","default":false},"href":{"editor":"text","default":"#top"},"$preview":{"width":260,"height":40}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const inv = this.props.inverse ?? false;
+    return { href: this.props.href ?? '#top', textColor: inv ? 'var(--color-text-inverse)' : 'var(--color-text-primary)' };
+  }
+}
+</script>
+</body>
+</html>

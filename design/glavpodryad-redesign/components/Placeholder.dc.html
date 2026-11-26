@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Placeholder</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/9afbdd1d3a7a2ca396776f528a834ba2">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 100%; height: {{height}}; box-sizing: border-box; background: {{bg}}; border: {{border}}; color: {{fg}}; display: flex; align-items: center; justify-content: center; font-family: var(--font-body); font-size: 13px; text-align: center; padding: 12px">{{label}}</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"label":{"editor":"text","default":"[ Фото ]"},"height":{"editor":"int","default":300,"unit":"px"},"tone":{"editor":"enum","options":["fill","dark","outline"],"default":"fill"},"$preview":{"width":400,"height":300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const t = this.props.tone ?? 'fill';
+    return {
+      label: this.props.label ?? '[ Фото ]',
+      height: (this.props.height ?? 300) + 'px',
+      bg: t === 'dark' ? 'var(--color-bg-media)' : (t === 'outline' ? 'transparent' : 'var(--color-bg-placeholder)'),
+      fg: t === 'dark' ? 'var(--color-text-inverse-secondary)' : 'var(--color-text-muted)',
+      border: t === 'outline' ? '1px solid var(--color-border-divider)' : '0'
+    };
+  }
+}
+</script>
+</body>
+</html>

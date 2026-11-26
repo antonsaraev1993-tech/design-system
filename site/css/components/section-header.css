@@ -1,0 +1,14 @@
+/* SectionHeader · свойства: overline, heading, linkLabel + linkHref (ссылка справа, необязательна), inverse.
+   .gp-section-header--spaced даёт отступ до контента: 48 px, на тёмном space-block. */
+.gp-section-header {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end;
+  gap: var(--space-gap-cards); color: var(--color-text-primary);
+}
+.gp-section-header--inverse { color: var(--color-text-inverse); }
+.gp-section-header--spaced { margin-bottom: var(--gp-space-3xl); }
+.gp-section-header--inverse.gp-section-header--spaced { margin-bottom: var(--space-block); }
+.gp-section-header__text { display: flex; flex-direction: column; gap: var(--space-inline-md); max-width: var(--gp-text-max); }
+.gp-section-header__title {
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--type-h2-size); line-height: var(--type-h2-lh); letter-spacing: var(--type-h2-tracking);
+}

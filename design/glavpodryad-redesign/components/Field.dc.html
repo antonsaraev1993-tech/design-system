@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Field</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/9afbdd1d3a7a2ca396776f528a834ba2">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<label style="display: flex; flex-direction: column; gap: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--color-text-primary)">{{label}}
+<sc-if value="{{isSelect}}" hint-placeholder-val="{{ false }}">
+<select style="height: var(--size-control-md); border: 1px solid var(--color-border-default); background: var(--color-bg-page); color: var(--color-text-primary); padding: 0 12px; font: inherit; font-weight: 400; font-size: 16px">
+<sc-for list="{{options}}" as="o" hint-placeholder-count="3"><option>{{o}}</option></sc-for>
+</select>
+</sc-if>
+<sc-if value="{{isInput}}" hint-placeholder-val="{{ true }}">
+<input type="{{type}}" placeholder="{{placeholder}}" style="height: var(--size-control-md); border: 1px solid var(--color-border-default); background: var(--color-bg-page); color: var(--color-text-primary); padding: 0 var(--space-inline-md); font: inherit; font-weight: 400; font-size: 16px">
+</sc-if>
+</label>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"label":{"editor":"text","default":"Имя"},"placeholder":{"editor":"text","default":"Как к вам обращаться"},"type":{"editor":"enum","options":["text","tel","email"],"default":"text"},"kind":{"editor":"enum","options":["input","select"],"default":"input"},"options":{"editor":null,"default":[]},"$preview":{"width":400,"height":86}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const sel = (this.props.kind ?? 'input') === 'select';
+    return {
+      label: this.props.label ?? 'Имя', placeholder: this.props.placeholder ?? 'Как к вам обращаться',
+      type: this.props.type ?? 'text', isSelect: sel, isInput: !sel,
+      options: this.props.options ?? ['Строительство дома', 'Индивидуальный проект', 'Готовый проект']
+    };
+  }
+}
+</script>
+</body>
+</html>

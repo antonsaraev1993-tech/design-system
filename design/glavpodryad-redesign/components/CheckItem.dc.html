@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>CheckItem</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/9afbdd1d3a7a2ca396776f528a834ba2">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="padding: 14px 0; border-bottom: 1px solid var(--color-border-divider); display: flex; gap: 14px; font-family: var(--font-body); font-size: 16px; line-height: 1.55; color: var(--color-text-primary)">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-ink)" stroke-width="2.2" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M4 12.5l5 5L20 6.5"></path></svg>
+<span>{{label}}</span>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"label":{"editor":"text","default":"Приёмка выполненных работ"},"$preview":{"width":400,"height":52}}'>
+class Component extends DCLogic {
+  renderVals() { return { label: this.props.label ?? 'Приёмка выполненных работ' }; }
+}
+</script>
+</body>
+</html>

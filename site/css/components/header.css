@@ -1,0 +1,33 @@
+/* Header: Logo, 6 пунктов меню (у «Услуг» подменю из 13), телефон, Button primary sm.
+   Подменю раскрывается панелью под шапкой: на узких экранах не вылезает за край. */
+.gp-header { background: var(--color-bg-inverse); color: var(--color-text-inverse); border-bottom: var(--border-thin) solid var(--color-border-divider-inverse); }
+.gp-header__inner {
+  position: relative; padding-block: var(--gp-space-lg);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--gp-space-lg);
+}
+.gp-header__menu { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gp-space-xl); font-size: var(--gp-type-nav-size); font-weight: var(--font-weight-medium); }
+.gp-header__menu a { text-decoration: none; }
+.gp-header__item { display: inline-flex; align-items: center; gap: var(--gp-space-2xs); }
+.gp-header__toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: var(--size-control-sm); min-height: var(--size-control-sm); margin: calc(-1 * var(--space-inline-sm)) 0;
+  background: none; border: 0; color: inherit; cursor: pointer; padding: 0;
+}
+.gp-header__toggle svg { width: var(--gp-icon-sm); height: var(--gp-icon-sm); transition: transform 0.2s; }
+.gp-header__toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.gp-header__toggle:hover { color: var(--color-accent); }
+@media (prefers-reduced-motion: reduce) { .gp-header__toggle svg { transition: none; } }
+
+.gp-submenu {
+  position: absolute; z-index: 5; top: 100%;
+  left: max(var(--space-page-gutter), env(safe-area-inset-left, 0px));
+  right: max(var(--space-page-gutter), env(safe-area-inset-right, 0px));
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--gp-col-stat)), 1fr));
+  gap: 0 var(--space-gap-cards); padding: var(--space-inline-md) var(--space-gap-cards);
+  background: var(--color-bg-inverse); border: var(--border-thin) solid var(--color-border-divider-inverse);
+  font-size: var(--type-body-sm-size); font-weight: var(--font-weight-regular);
+}
+.gp-submenu a { display: flex; align-items: center; min-height: var(--size-control-sm); }
+
+.gp-header__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gp-space-lg); }
+.gp-header__phone { text-decoration: none; font-weight: var(--font-weight-bold); font-size: var(--type-body-size); }
