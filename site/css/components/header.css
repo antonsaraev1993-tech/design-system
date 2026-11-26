@@ -1,0 +1,88 @@
+/* Header: Logo, 6 пунктов меню (у «Услуг» подменю из 13), телефон, Button primary sm.
+   Подменю раскрывается панелью под шапкой: на узких экранах не вылезает за край. */
+.gp-header { position: sticky; top: 0; z-index: 20; transition: transform 0.25s ease; background: var(--color-bg-inverse); color: var(--color-text-inverse); border-bottom: var(--border-thin) solid var(--color-border-divider-inverse); }
+.gp-header__inner {
+  position: relative; padding-block: var(--gp-space-lg);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--gp-space-lg);
+}
+.gp-header__menu { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gp-space-xl); font-size: var(--gp-type-nav-size); font-weight: var(--font-weight-medium); }
+.gp-header__menu a { text-decoration: none; }
+.gp-header__item { display: inline-flex; align-items: center; gap: var(--gp-space-2xs); }
+/* «Услуги» со стрелкой: одна кнопка, текст и стрелка вместе. Без JS вместо неё ссылка на секцию. */
+.gp-header__toggle {
+  display: inline-flex; align-items: center; gap: var(--gp-space-2xs);
+  min-height: var(--size-control-sm); margin: calc(-1 * var(--space-inline-sm)) 0;
+  background: none; border: 0; color: inherit; cursor: pointer; padding: 0; font: inherit;
+}
+.gp-header__toggle svg { width: var(--gp-icon-sm); height: var(--gp-icon-sm); transition: transform 0.2s; }
+.gp-header__toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.gp-header__toggle:hover { color: var(--color-accent); }
+@media (prefers-reduced-motion: reduce) { .gp-header__toggle svg, .gp-header { transition: none; } }
+/* При прокрутке вниз шапка уезжает вверх, при прокрутке вверх возвращается (js/header.js) */
+.gp-header--hidden { transform: translateY(-100%); }
+
+.gp-submenu {
+  position: absolute; z-index: 5; top: 100%;
+  left: max(var(--space-page-gutter), env(safe-area-inset-left, 0px));
+  right: max(var(--space-page-gutter), env(safe-area-inset-right, 0px));
+  padding: var(--space-inline-md) var(--space-gap-cards);
+  background: var(--color-bg-inverse); border: var(--border-thin) solid var(--color-border-divider-inverse);
+  font-size: var(--type-body-sm-size); font-weight: var(--font-weight-regular);
+}
+.gp-submenu[hidden] { display: none; }
+.gp-submenu__list {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--gp-col-stat)), 1fr));
+  gap: 0 var(--space-gap-cards); margin: 0; padding: 0; list-style: none;
+}
+.gp-submenu a { display: flex; align-items: center; min-height: var(--size-control-sm); }
+.gp-submenu a:hover, .gp-submenu a:focus-visible, .gp-submenu a[data-active] { color: var(--color-accent); }
+
+/* Превью справа: только там, где есть наведение мышью (десктоп). На тач-экранах просто список.
+   Картинка — линейная иллюстрация услуги (img/services/*.svg), не фото. */
+.gp-submenu__preview { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .gp-submenu { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--space-gap-cards); align-items: start; }
+  .gp-submenu__preview {
+    display: flex; flex-direction: column; gap: var(--space-inline-sm);
+    margin-block: var(--space-inline-xs); padding: var(--space-gap-cards); background: var(--color-bg-media);
+  }
+  .gp-submenu__art {
+    width: 100%; aspect-ratio: 5 / 3; background: var(--color-text-inverse-muted);
+    -webkit-mask: center / contain no-repeat; mask: center / contain no-repeat;
+  }
+  .gp-submenu__caption { margin: 0; font-weight: var(--font-weight-semibold); color: var(--color-text-inverse); }
+}
+.gp-submenu__art[data-art="design"] { -webkit-mask-image: url("../../img/services/design.svg"); mask-image: url("../../img/services/design.svg"); }
+.gp-submenu__art[data-art="ready"] { -webkit-mask-image: url("../../img/services/ready.svg"); mask-image: url("../../img/services/ready.svg"); }
+.gp-submenu__art[data-art="inspect"] { -webkit-mask-image: url("../../img/services/inspect.svg"); mask-image: url("../../img/services/inspect.svg"); }
+.gp-submenu__art[data-art="landscape"] { -webkit-mask-image: url("../../img/services/landscape.svg"); mask-image: url("../../img/services/landscape.svg"); }
+.gp-submenu__art[data-art="supervision"] { -webkit-mask-image: url("../../img/services/supervision.svg"); mask-image: url("../../img/services/supervision.svg"); }
+.gp-submenu__art[data-art="concrete"] { -webkit-mask-image: url("../../img/services/concrete.svg"); mask-image: url("../../img/services/concrete.svg"); }
+.gp-submenu__art[data-art="stone"] { -webkit-mask-image: url("../../img/services/stone.svg"); mask-image: url("../../img/services/stone.svg"); }
+.gp-submenu__art[data-art="roof"] { -webkit-mask-image: url("../../img/services/roof.svg"); mask-image: url("../../img/services/roof.svg"); }
+.gp-submenu__art[data-art="engineering"] { -webkit-mask-image: url("../../img/services/engineering.svg"); mask-image: url("../../img/services/engineering.svg"); }
+.gp-submenu__art[data-art="interior"] { -webkit-mask-image: url("../../img/services/interior.svg"); mask-image: url("../../img/services/interior.svg"); }
+.gp-submenu__art[data-art="legal"] { -webkit-mask-image: url("../../img/services/legal.svg"); mask-image: url("../../img/services/legal.svg"); }
+.gp-submenu__art[data-art="metal"] { -webkit-mask-image: url("../../img/services/metal.svg"); mask-image: url("../../img/services/metal.svg"); }
+.gp-submenu__art[data-art="drainage"] { -webkit-mask-image: url("../../img/services/drainage.svg"); mask-image: url("../../img/services/drainage.svg"); }
+
+.gp-header__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gp-space-lg); }
+.gp-header__phone { text-decoration: none; font-weight: var(--font-weight-bold); font-size: var(--type-body-size); }
+
+/* Переключатель темы: маленькая точка у самого правого края экрана, вне контейнера шапки,
+   поэтому ширина шапки не меняется. По высоте на уровне логотипа.
+   Заполненная — светлая тема, кольцо — тёмная. Зона нажатия 44 px, сама точка 12 px. Без JS скрыт. */
+.gp-theme {
+  position: absolute; z-index: 6; right: env(safe-area-inset-right, 0px);
+  top: calc(var(--gp-space-lg) + (var(--gp-logo-mark) - var(--size-control-sm)) / 2);
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: var(--size-control-sm); min-height: var(--size-control-sm);
+  padding: 0; background: none; border: 0; color: var(--color-text-inverse); cursor: pointer;
+}
+.gp-theme[hidden] { display: none; }
+.gp-theme::before {
+  content: ""; width: var(--gp-theme-dot); height: var(--gp-theme-dot); box-sizing: border-box;
+  border-radius: var(--radius-full); border: var(--border-focus) solid currentColor; background: currentColor;
+}
+.gp-theme[aria-pressed="true"]::before { background: transparent; }
+.gp-theme:hover { color: var(--color-accent); }

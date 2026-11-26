@@ -1,0 +1,17 @@
+/* Field · свойства: label, placeholder, type: text | tel | email, kind: input | select, options.
+   Подпись всегда видимая (<label>), не только плейсхолдер. */
+.gp-field {
+  display: flex; flex-direction: column; gap: var(--space-inline-xs);
+  font-size: var(--type-label-size); font-weight: var(--font-weight-semibold); color: var(--color-text-primary);
+}
+.gp-field__control {
+  box-sizing: border-box; width: 100%; height: var(--size-control-md);
+  border: var(--border-thin) solid var(--color-border-default); border-radius: var(--radius-none);
+  background: var(--color-bg-page); color: var(--color-text-primary);
+  padding: 0 var(--space-inline-md); font: inherit; font-weight: var(--font-weight-regular); font-size: var(--type-body-size);
+}
+select.gp-field__control { padding: 0 var(--space-inline-sm); }
+.gp-field__control::placeholder { color: var(--color-text-muted); }
+.gp-field__control:focus-visible { outline: var(--border-focus) solid var(--color-border-strong); outline-offset: calc(-1 * var(--border-thin)); }
+.gp-field__control[aria-invalid="true"] { border-color: var(--color-accent-ink); }
+.gp-field__error { font-size: var(--type-caption-size); font-weight: var(--font-weight-semibold); color: var(--color-accent-ink); }

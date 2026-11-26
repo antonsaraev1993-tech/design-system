@@ -1,0 +1,8 @@
+/* CheckItem · свойство: label. Стопкой в .gp-checklist (верхняя линия у родителя). */
+.gp-checklist { border-top: var(--border-thin) solid var(--color-border-divider); }
+.gp-check {
+  display: flex; gap: var(--gp-space-sm); padding: var(--gp-space-sm) 0;
+  border-bottom: var(--border-thin) solid var(--color-border-divider);
+  font-size: var(--type-body-size); color: var(--color-text-primary);
+}
+.gp-check__icon { flex: none; width: var(--gp-icon-md); height: var(--gp-icon-md); margin-top: var(--border-focus); color: var(--color-accent-ink); }

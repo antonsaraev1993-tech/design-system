@@ -1,0 +1,54 @@
+/* Главподряд · дизайн-токены. В макетах подключался как /_blob/9afbdd1d3a7a2ca396776f528a834ba2 */
+/* Главподряд · дизайн-токены v1.0. Имена совпадают с glavpodryad-tokens.json (semantic.*) */
+:root{
+  --color-accent:#FF7A1A;
+  --color-accent-hover:#E8650A;
+  --color-accent-large:#E8650A;
+  --color-accent-ink:#C2410C;
+  --color-accent-on:#0A0A0A;
+
+  --color-bg-page:#FFFFFF;
+  --color-bg-surface:#F5F4F1;
+  --color-bg-surface-2:#EFEDE8;
+  --color-bg-track:#EAE6DE;
+  --color-bg-placeholder:#D9D4CA;
+  --color-bg-inverse:#0A0A0A;
+  --color-bg-media:#2A2B2E;
+  --color-bg-disabled:#EFEDE8;
+
+  --color-text-primary:#16171A;
+  --color-text-secondary:#3A3832;
+  --color-text-muted:#5E5A52;
+  --color-text-inverse:#FFFFFF;
+  --color-text-inverse-secondary:#CFCFCF;
+  --color-text-inverse-muted:#A3A3A3;
+
+  --color-border-divider:#DCD7CC;
+  --color-border-default:#C9C3B7;
+  --color-border-strong:#16171A;
+  --color-border-inverse:#FFFFFF;
+  --color-border-divider-inverse:#3A3B3F;
+
+  --font-display:Unbounded, sans-serif;
+  --font-body:Manrope, system-ui, sans-serif;
+
+  --space-inline-xs:8px;
+  --space-inline-sm:12px;
+  --space-inline-md:16px;
+  --space-gap-cards:24px;
+  --space-page-gutter:32px;
+  --space-card-padding:36px;
+  --space-block:64px;
+  --space-section-dark:120px;
+  --space-section:140px;
+
+  --size-control-sm:44px;
+  --size-control-md:52px;
+  --size-control-lg:56px;
+  --size-container:1280px;
+}
+body{margin:0;background:var(--color-bg-page);color:var(--color-text-primary);font-family:var(--font-body)}
+a{color:var(--color-text-primary)}
+a:hover{color:var(--color-accent-ink)}
+.gp-inverse a{color:var(--color-text-inverse)}
+.gp-inverse a:hover{color:var(--color-accent)}

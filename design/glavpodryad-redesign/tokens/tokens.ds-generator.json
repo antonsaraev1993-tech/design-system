@@ -1,0 +1,815 @@
+{
+  "$extensions": {
+    "ds.roles": {
+      "primary": "#FF7A1A",
+      "surface": "#FFFFFF",
+      "text": "#16171A"
+    }
+  },
+  "core": {
+    "color": {
+      "orange": {
+        "500": {
+          "$type": "color",
+          "$value": "#FF7A1A",
+          "$description": "Accent / Primary"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#E8650A",
+          "$description": "Accent / Large"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#C2410C",
+          "$description": "Accent / Ink"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "#FFD9BF",
+          "$description": "Светлый оранжевый, служебный"
+        }
+      },
+      "neutral": {
+        "0": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "50": {
+          "$type": "color",
+          "$value": "#F5F4F1"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "#EFEDE8"
+        },
+        "150": {
+          "$type": "color",
+          "$value": "#EAE6DE"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#DCD7CC"
+        },
+        "250": {
+          "$type": "color",
+          "$value": "#D9D4CA"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#C9C3B7"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#CFCFCF"
+        },
+        "450": {
+          "$type": "color",
+          "$value": "#CFCAC0"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#A3A3A3"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#5E5A52"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#3A3832"
+        },
+        "750": {
+          "$type": "color",
+          "$value": "#3A3B3F"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#2A2B2E"
+        },
+        "850": {
+          "$type": "color",
+          "$value": "#2A2A2A"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#16171A"
+        },
+        "950": {
+          "$type": "color",
+          "$value": "#0A0A0A"
+        }
+      }
+    },
+    "fontFamily": {
+      "display": {
+        "$type": "fontFamily",
+        "$value": "Unbounded"
+      },
+      "body": {
+        "$type": "fontFamily",
+        "$value": "Manrope"
+      }
+    },
+    "fontWeight": {
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": 500
+      },
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "bold": {
+        "$type": "fontWeight",
+        "$value": 700
+      }
+    },
+    "fontSize": {
+      "13": {
+        "$type": "dimension",
+        "$value": "13px"
+      },
+      "14": {
+        "$type": "dimension",
+        "$value": "14px"
+      },
+      "15": {
+        "$type": "dimension",
+        "$value": "15px"
+      },
+      "16": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "18": {
+        "$type": "dimension",
+        "$value": "18px"
+      },
+      "19": {
+        "$type": "dimension",
+        "$value": "19px"
+      },
+      "20": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "24": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "36": {
+        "$type": "dimension",
+        "$value": "36px"
+      },
+      "48": {
+        "$type": "dimension",
+        "$value": "48px"
+      },
+      "56": {
+        "$type": "dimension",
+        "$value": "56px"
+      },
+      "76": {
+        "$type": "dimension",
+        "$value": "76px"
+      }
+    },
+    "lineHeight": {
+      "none": {
+        "$type": "number",
+        "$value": 1.0
+      },
+      "tight": {
+        "$type": "number",
+        "$value": 1.04
+      },
+      "heading": {
+        "$type": "number",
+        "$value": 1.12
+      },
+      "snug": {
+        "$type": "number",
+        "$value": 1.25
+      },
+      "body": {
+        "$type": "number",
+        "$value": 1.55
+      }
+    },
+    "letterSpacing": {
+      "tighter": {
+        "$type": "dimension",
+        "$value": "-0.02em"
+      },
+      "tight": {
+        "$type": "dimension",
+        "$value": "-0.01em"
+      },
+      "normal": {
+        "$type": "dimension",
+        "$value": "0.0em"
+      },
+      "logo": {
+        "$type": "dimension",
+        "$value": "0.02em"
+      },
+      "caps": {
+        "$type": "dimension",
+        "$value": "0.12em"
+      }
+    },
+    "textCase": {
+      "none": {
+        "$type": "string",
+        "$value": "none"
+      },
+      "upper": {
+        "$type": "string",
+        "$value": "uppercase"
+      }
+    },
+    "spacing": {
+      "1": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "1_5": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "2": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "3": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "4": {
+        "$type": "dimension",
+        "$value": "32px"
+      },
+      "6": {
+        "$type": "dimension",
+        "$value": "48px"
+      },
+      "8": {
+        "$type": "dimension",
+        "$value": "64px"
+      },
+      "12": {
+        "$type": "dimension",
+        "$value": "96px"
+      },
+      "15": {
+        "$type": "dimension",
+        "$value": "120px"
+      },
+      "17_5": {
+        "$type": "dimension",
+        "$value": "140px"
+      }
+    },
+    "borderRadius": {
+      "none": {
+        "$type": "dimension",
+        "$value": "0px"
+      },
+      "full": {
+        "$type": "dimension",
+        "$value": "999px",
+        "$description": "Только кнопка Play"
+      }
+    },
+    "borderWidth": {
+      "thin": {
+        "$type": "dimension",
+        "$value": "1px"
+      },
+      "focus": {
+        "$type": "dimension",
+        "$value": "2px"
+      }
+    },
+    "sizing": {
+      "control-sm": {
+        "$type": "dimension",
+        "$value": "44px"
+      },
+      "control-md": {
+        "$type": "dimension",
+        "$value": "52px"
+      },
+      "control-lg": {
+        "$type": "dimension",
+        "$value": "56px"
+      },
+      "play": {
+        "$type": "dimension",
+        "$value": "64px"
+      },
+      "container": {
+        "$type": "dimension",
+        "$value": "1280px"
+      },
+      "progress": {
+        "$type": "dimension",
+        "$value": "8px"
+      }
+    }
+  },
+  "semantic": {
+    "color": {
+      "accent": {
+        "default": {
+          "$type": "color",
+          "$value": "#FF7A1A",
+          "$description": "Кнопки, логотип, акценты на тёмном. Не для текста на белом"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "#E8650A"
+        },
+        "large": {
+          "$type": "color",
+          "$value": "#E8650A",
+          "$description": "Крупные цифры от 24 px на белом, 3.3:1"
+        },
+        "ink": {
+          "$type": "color",
+          "$value": "#C2410C",
+          "$description": "Мелкий акцентный текст на белом, 5.2:1"
+        },
+        "on": {
+          "$type": "color",
+          "$value": "#0A0A0A",
+          "$description": "Текст на оранжевом"
+        }
+      },
+      "bg": {
+        "page": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "surface": {
+          "$type": "color",
+          "$value": "#F5F4F1"
+        },
+        "surface-2": {
+          "$type": "color",
+          "$value": "#EFEDE8"
+        },
+        "track": {
+          "$type": "color",
+          "$value": "#EAE6DE"
+        },
+        "placeholder": {
+          "$type": "color",
+          "$value": "#D9D4CA"
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "#0A0A0A"
+        },
+        "media": {
+          "$type": "color",
+          "$value": "#2A2B2E"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "#EFEDE8"
+        }
+      },
+      "text": {
+        "primary": {
+          "$type": "color",
+          "$value": "#16171A"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "#3A3832"
+        },
+        "muted": {
+          "$type": "color",
+          "$value": "#5E5A52"
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "inverse-secondary": {
+          "$type": "color",
+          "$value": "#CFCFCF"
+        },
+        "inverse-muted": {
+          "$type": "color",
+          "$value": "#A3A3A3"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "#5E5A52"
+        }
+      },
+      "border": {
+        "divider": {
+          "$type": "color",
+          "$value": "#DCD7CC"
+        },
+        "default": {
+          "$type": "color",
+          "$value": "#C9C3B7"
+        },
+        "strong": {
+          "$type": "color",
+          "$value": "#16171A"
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "divider-inverse": {
+          "$type": "color",
+          "$value": "#3A3B3F"
+        }
+      }
+    },
+    "typography": {
+      "display": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Unbounded",
+          "fontWeight": 500,
+          "fontSize": "76px",
+          "lineHeight": 1.04,
+          "letterSpacing": "-0.02em"
+        },
+        "$description": "H1, на мобильном 40"
+      },
+      "stat": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Unbounded",
+          "fontWeight": 500,
+          "fontSize": "56px",
+          "lineHeight": 1.0,
+          "letterSpacing": "0.0em"
+        }
+      },
+      "h2": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Unbounded",
+          "fontWeight": 500,
+          "fontSize": "48px",
+          "lineHeight": 1.12,
+          "letterSpacing": "-0.01em"
+        },
+        "$description": "На мобильном 30"
+      },
+      "h3": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Unbounded",
+          "fontWeight": 500,
+          "fontSize": "24px",
+          "lineHeight": 1.25,
+          "letterSpacing": "0.0em"
+        }
+      },
+      "h4": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Unbounded",
+          "fontWeight": 500,
+          "fontSize": "20px",
+          "lineHeight": 1.25,
+          "letterSpacing": "0.0em"
+        }
+      },
+      "logo": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Unbounded",
+          "fontWeight": 600,
+          "fontSize": "18px",
+          "lineHeight": 1.0,
+          "letterSpacing": "0.02em"
+        }
+      },
+      "overline": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Manrope",
+          "fontWeight": 600,
+          "fontSize": "14px",
+          "lineHeight": 1.55,
+          "letterSpacing": "0.12em"
+        }
+      },
+      "lead": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Manrope",
+          "fontWeight": 400,
+          "fontSize": "19px",
+          "lineHeight": 1.55,
+          "letterSpacing": "0.0em"
+        }
+      },
+      "body": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Manrope",
+          "fontWeight": 400,
+          "fontSize": "16px",
+          "lineHeight": 1.55,
+          "letterSpacing": "0.0em"
+        }
+      },
+      "body-sm": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Manrope",
+          "fontWeight": 400,
+          "fontSize": "15px",
+          "lineHeight": 1.55,
+          "letterSpacing": "0.0em"
+        }
+      },
+      "button": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Manrope",
+          "fontWeight": 600,
+          "fontSize": "16px",
+          "lineHeight": 1.0,
+          "letterSpacing": "0.0em"
+        }
+      },
+      "button-sm": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Manrope",
+          "fontWeight": 600,
+          "fontSize": "15px",
+          "lineHeight": 1.0,
+          "letterSpacing": "0.0em"
+        }
+      },
+      "label": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Manrope",
+          "fontWeight": 600,
+          "fontSize": "14px",
+          "lineHeight": 1.55,
+          "letterSpacing": "0.0em"
+        }
+      },
+      "badge": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Manrope",
+          "fontWeight": 600,
+          "fontSize": "13px",
+          "lineHeight": 1.55,
+          "letterSpacing": "0.0em"
+        }
+      },
+      "caption": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Manrope",
+          "fontWeight": 400,
+          "fontSize": "13px",
+          "lineHeight": 1.55,
+          "letterSpacing": "0.0em"
+        }
+      }
+    },
+    "space": {
+      "inline-xs": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "inline-sm": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "inline-md": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "gap-cards": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "page-gutter": {
+        "$type": "dimension",
+        "$value": "32px"
+      },
+      "card-padding": {
+        "$type": "dimension",
+        "$value": "36px"
+      },
+      "block": {
+        "$type": "dimension",
+        "$value": "64px"
+      },
+      "section-dark": {
+        "$type": "dimension",
+        "$value": "120px"
+      },
+      "section": {
+        "$type": "dimension",
+        "$value": "140px"
+      }
+    }
+  },
+  "components": {
+    "button": {
+      "primary": {
+        "bg": {
+          "$type": "color",
+          "$value": "#FF7A1A"
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "#E8650A"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "#0A0A0A"
+        }
+      },
+      "outline": {
+        "border": {
+          "$type": "color",
+          "$value": "#16171A"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "#16171A"
+        }
+      },
+      "outline-inverse": {
+        "border": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        }
+      },
+      "disabled": {
+        "bg": {
+          "$type": "color",
+          "$value": "#EFEDE8"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "#5E5A52"
+        }
+      },
+      "height-md": {
+        "$type": "dimension",
+        "$value": "52px"
+      },
+      "height-sm": {
+        "$type": "dimension",
+        "$value": "44px"
+      },
+      "padding-x-md": {
+        "$type": "dimension",
+        "$value": "28px"
+      },
+      "padding-x-sm": {
+        "$type": "dimension",
+        "$value": "22px"
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "0px"
+      }
+    },
+    "input": {
+      "bg": {
+        "$type": "color",
+        "$value": "#FFFFFF"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "#C9C3B7"
+      },
+      "border-focus": {
+        "$type": "color",
+        "$value": "#16171A"
+      },
+      "border-width-focus": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "height": {
+        "$type": "dimension",
+        "$value": "52px"
+      },
+      "padding-x": {
+        "$type": "dimension",
+        "$value": "16px"
+      }
+    },
+    "chip": {
+      "border": {
+        "$type": "color",
+        "$value": "#C9C3B7"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "#16171A"
+      },
+      "height": {
+        "$type": "dimension",
+        "$value": "44px"
+      }
+    },
+    "badge": {
+      "bg": {
+        "$type": "color",
+        "$value": "#FFFFFF"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "#16171A"
+      }
+    },
+    "progress": {
+      "track": {
+        "$type": "color",
+        "$value": "#EAE6DE"
+      },
+      "fill": {
+        "$type": "color",
+        "$value": "#FF7A1A"
+      },
+      "height": {
+        "$type": "dimension",
+        "$value": "8px"
+      }
+    },
+    "card": {
+      "service-bg": {
+        "$type": "color",
+        "$value": "#F5F4F1"
+      },
+      "service-bg-inverse": {
+        "$type": "color",
+        "$value": "#0A0A0A"
+      },
+      "number": {
+        "$type": "color",
+        "$value": "#C2410C"
+      },
+      "number-inverse": {
+        "$type": "color",
+        "$value": "#FF7A1A"
+      },
+      "padding": {
+        "$type": "dimension",
+        "$value": "36px"
+      }
+    },
+    "stat": {
+      "value": {
+        "$type": "color",
+        "$value": "#E8650A"
+      },
+      "label": {
+        "$type": "color",
+        "$value": "#3A3832"
+      }
+    }
+  },
+  "role": {
+    "primary": {
+      "$type": "color",
+      "$value": "#FF7A1A",
+      "$description": "Роль для слайдов DS Generator"
+    },
+    "surface": {
+      "$type": "color",
+      "$value": "#FFFFFF",
+      "$description": "Роль для слайдов DS Generator"
+    },
+    "text": {
+      "$type": "color",
+      "$value": "#16171A",
+      "$description": "Роль для слайдов DS Generator"
+    }
+  }
+}

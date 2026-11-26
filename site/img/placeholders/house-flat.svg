@@ -1,0 +1,3 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120"><!-- двухэтажный, современный, плоская кровля -->
+<path fill-rule="evenodd" d="M40 56 H112 V112 H40 Z M50 66 h52 v16 h-52 Z M50 90 h20 v22 h-20 Z M78 90 h24 v14 h-24 Z M84 30 H164 V56 H84 Z M112 56 H164 V112 H112 Z M94 38 h60 v12 h-60 Z M122 66 h32 v38 h-32 Z"/>
+<rect x="36" y="52" width="80" height="4"/><rect x="80" y="26" width="88" height="4"/><rect x="0" y="112" width="200" height="2"/></svg>

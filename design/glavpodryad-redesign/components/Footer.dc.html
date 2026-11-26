@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Footer</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/9afbdd1d3a7a2ca396776f528a834ba2">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<footer id="docs" class="gp-inverse" style="width: 100%; background: var(--color-bg-inverse); color: var(--color-text-inverse-secondary); font-family: var(--font-body); line-height: 1.55">
+<div style="max-width: var(--size-container); margin: 0 auto; padding: var(--space-block) var(--space-page-gutter) 40px; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 40px">
+<dc-import name="Logo" inverse="{{ true }}" hint-size="220px,40px"></dc-import>
+<nav aria-label="Меню в подвале" style="display: flex; flex-wrap: wrap; gap: 28px">
+<sc-for list="{{nav}}" as="item" hint-placeholder-count="5"><a href="{{item.href}}" style="text-decoration: none">{{item.label}}</a></sc-for>
+</nav>
+<div style="display: flex; gap: var(--space-inline-md)"><a href="#docs">RuTube</a><a href="#docs">VK</a></div>
+</div>
+<div style="border-top: 1px solid var(--color-border-divider-inverse); padding-top: var(--space-gap-cards); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 28px; font-size: 13px">
+<span>© 2026 Главподряд</span>
+<div style="display: flex; flex-wrap: wrap; gap: 12px 24px">
+<sc-for list="{{legal}}" as="l" hint-placeholder-count="5"><a href="#docs" style="color: var(--color-text-inverse-secondary)">{{l}}</a></sc-for>
+</div>
+</div>
+</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":260}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      nav: [ { label: 'О компании', href: '#about' }, { label: 'Услуги', href: '#services' }, { label: 'Проекты', href: '#projects' }, { label: 'Контакты', href: '#contacts' }, { label: 'Блог', href: '#blog' } ],
+      legal: ['Политика конфиденциальности', 'Реквизиты', 'Документы', 'Договор публичной оферты', 'Соглашение об обработке персональных данных']
+    };
+  }
+}
+</script>
+</body>
+</html>

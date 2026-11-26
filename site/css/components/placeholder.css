@@ -1,0 +1,26 @@
+/* Placeholder · свойства: label, height (модификатор), tone: fill | dark | outline.
+   Атрибут data-todo совпадает с номером в TODO.md: по нему заглушку легко найти и заменить. */
+.gp-placeholder {
+  box-sizing: border-box; width: 100%; height: var(--gp-photo-h);
+  background: var(--color-bg-placeholder); color: var(--color-text-muted);
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: var(--space-inline-sm); font-size: var(--type-caption-size);
+}
+.gp-placeholder--dark { background: var(--color-bg-media); color: var(--color-text-inverse-secondary); }
+.gp-placeholder--outline { background: transparent; border: var(--border-thin) solid var(--color-border-divider); }
+.gp-placeholder--photo { height: var(--gp-photo-h); }
+.gp-placeholder--cover { height: var(--gp-cover-h); }
+.gp-placeholder--thumb { height: var(--gp-thumb-h); }
+.gp-placeholder--logo { height: var(--gp-partner-h); }
+
+/* Рисунок дома вместо фото объекта (TODO-03). Силуэт по этажности объекта, не фото и не сток.
+   SVG используется как маска, цвет берётся из токена. */
+.gp-placeholder--house::before {
+  content: ""; width: 60%; aspect-ratio: 5 / 3; background: var(--color-border-default);
+  -webkit-mask: center / contain no-repeat; mask: center / contain no-repeat;
+}
+.gp-placeholder--house-gable::before { -webkit-mask-image: url("../../img/placeholders/house-gable.svg"); mask-image: url("../../img/placeholders/house-gable.svg"); }
+.gp-placeholder--house-slope::before { -webkit-mask-image: url("../../img/placeholders/house-slope.svg"); mask-image: url("../../img/placeholders/house-slope.svg"); }
+.gp-placeholder--house-low::before   { -webkit-mask-image: url("../../img/placeholders/house-low.svg"); mask-image: url("../../img/placeholders/house-low.svg"); }
+.gp-placeholder--house-flat::before  { -webkit-mask-image: url("../../img/placeholders/house-flat.svg"); mask-image: url("../../img/placeholders/house-flat.svg"); }
+.gp-placeholder--house-banya::before { -webkit-mask-image: url("../../img/placeholders/house-banya.svg"); mask-image: url("../../img/placeholders/house-banya.svg"); }

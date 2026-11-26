@@ -1,0 +1,18 @@
+/* Logo · свойства: inverse, href. Квадрат всегда color-accent, буква белая (color-text-inverse) в обеих темах. */
+.gp-logo.gp-logo {
+  display: inline-flex; align-items: center; gap: var(--space-inline-sm);
+  text-decoration: none; color: var(--color-text-primary); font-family: var(--font-display);
+}
+.gp-logo.gp-logo--inverse, .gp-logo.gp-logo--inverse:hover { color: var(--color-text-inverse); }
+.gp-logo.gp-logo:hover { color: var(--color-text-primary); }
+.gp-logo.gp-logo--inverse:hover { color: var(--color-text-inverse); }
+.gp-logo__mark {
+  width: var(--gp-logo-mark); height: var(--gp-logo-mark); flex: none;
+  background: var(--color-accent); color: var(--color-text-inverse);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: var(--font-weight-semibold); font-size: var(--type-logo-size); line-height: var(--type-logo-lh);
+}
+.gp-logo__word {
+  font-weight: var(--font-weight-semibold); font-size: var(--type-logo-size);
+  line-height: var(--type-logo-lh); letter-spacing: var(--type-logo-tracking);
+}

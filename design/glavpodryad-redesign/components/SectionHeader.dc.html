@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>SectionHeader</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/9afbdd1d3a7a2ca396776f528a834ba2">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--space-gap-cards); font-family: var(--font-body); color: {{titleColor}}">
+<div style="display: flex; flex-direction: column; gap: var(--space-inline-md); max-width: 820px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.55; color: {{overlineColor}}">{{overline}}</p>
+<h2 style="margin: 0; font-family: var(--font-display); font-weight: 500; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.12; letter-spacing: -0.01em">{{heading}}</h2>
+</div>
+<sc-if value="{{hasLink}}" hint-placeholder-val="{{ false }}">
+<dc-import name="Button" variant="link" label="{{linkLabel}}" href="{{linkHref}}" inverse="{{inverse}}" hint-size="160px,44px"></dc-import>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"overline":{"editor":"text","default":"Наши объекты"},"heading":{"editor":"text","default":"Спроектируем и построим дом вашей мечты"},"linkLabel":{"editor":"text","default":""},"linkHref":{"editor":"text","default":"#"},"inverse":{"editor":"boolean","default":false},"$preview":{"width":1216,"height":140}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const inv = this.props.inverse ?? false;
+    const link = this.props.linkLabel ?? '';
+    return {
+      overline: this.props.overline ?? 'Наши объекты',
+      heading: this.props.heading ?? 'Спроектируем и построим дом вашей мечты',
+      linkLabel: link, linkHref: this.props.linkHref ?? '#', hasLink: link !== '',
+      inverse: inv,
+      titleColor: inv ? 'var(--color-text-inverse)' : 'var(--color-text-primary)',
+      overlineColor: inv ? 'var(--color-text-inverse-muted)' : 'var(--color-text-muted)'
+    };
+  }
+}
+</script>
+</body>
+</html>

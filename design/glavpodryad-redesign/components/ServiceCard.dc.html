@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>ServiceCard</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/9afbdd1d3a7a2ca396776f528a834ba2">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<a href="{{href}}" style="text-decoration: none; height: 100%; min-height: 300px; box-sizing: border-box; background: {{bg}}; color: {{fg}}; padding: var(--space-card-padding); display: flex; flex-direction: column; gap: var(--space-inline-md); font-family: var(--font-body); line-height: 1.55">
+<span style="font-family: var(--font-display); font-size: 14px; color: {{numColor}}">{{n}}</span>
+<h3 style="margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 24px; line-height: 1.2">{{heading}}</h3>
+<p style="margin: 0; color: {{textColor}}">{{text}}</p>
+<span style="margin-top: auto; font-weight: 600">{{cta}} →</span>
+</a>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"n":{"editor":"text","default":"01"},"heading":{"editor":"text","default":"Готовые проекты домов"},"text":{"editor":"text","default":"Проверенные проекты: дешевле в проектировании и быстрее в строительстве."},"cta":{"editor":"text","default":"Подробнее"},"href":{"editor":"text","default":"#services"},"inverse":{"editor":"boolean","default":false},"$preview":{"width":389,"height":300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const inv = this.props.inverse ?? false;
+    return {
+      n: this.props.n ?? '01', heading: this.props.heading ?? 'Готовые проекты домов',
+      text: this.props.text ?? 'Проверенные проекты: дешевле в проектировании и быстрее в строительстве.',
+      cta: this.props.cta ?? 'Подробнее', href: this.props.href ?? '#services',
+      bg: inv ? 'var(--color-bg-inverse)' : 'var(--color-bg-surface)',
+      fg: inv ? 'var(--color-text-inverse)' : 'var(--color-text-primary)',
+      textColor: inv ? 'var(--color-text-inverse-secondary)' : 'var(--color-text-secondary)',
+      numColor: inv ? 'var(--color-accent)' : 'var(--color-accent-ink)'
+    };
+  }
+}
+</script>
+</body>
+</html>

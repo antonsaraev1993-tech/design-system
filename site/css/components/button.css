@@ -1,0 +1,30 @@
+/* Button · variant: primary | outline | link (+ отдельный Play в page.css как .gp-play)
+   size: md (по умолчанию) | sm · inverse · arrow (иконка внутри) · block · submit (<button type="submit">, высота lg) */
+.gp-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--gp-space-xs);
+  box-sizing: border-box; min-height: var(--size-control-md); padding: 0 var(--gp-button-px);
+  font: inherit; font-size: var(--type-button-size); font-weight: var(--font-weight-semibold);
+  border: 0; border-radius: var(--radius-none); text-decoration: none; cursor: pointer; text-align: center;
+}
+.gp-btn--sm { min-height: var(--size-control-sm); padding: 0 var(--gp-button-px-sm); font-size: var(--type-button-sm-size); }
+.gp-btn--lg { min-height: var(--size-control-lg); font-weight: var(--font-weight-bold); }
+.gp-btn--block { display: flex; width: 100%; }
+.gp-btn__icon { width: var(--gp-icon-sm); height: var(--gp-icon-sm); flex: none; }
+
+/* Белый текст на accent-ink: 5.2:1 (AA). На --color-accent белый даёт 2.6:1, поэтому фон темнее.
+   Темнее accent-ink токена нет, hover обозначен подчёркиванием, а не сменой фона. */
+.gp-btn.gp-btn--primary, .gp-btn.gp-btn--primary:visited { background: var(--gp-btn-primary-bg); color: var(--color-text-inverse); }
+.gp-btn.gp-btn--primary:hover { background: var(--gp-btn-primary-bg); color: var(--color-text-inverse); text-decoration: underline; text-underline-offset: var(--gp-underline-offset); }
+
+.gp-btn.gp-btn--outline { background: transparent; color: var(--color-text-primary); border: var(--border-thin) solid var(--color-border-strong); }
+.gp-btn.gp-btn--outline:hover { color: var(--color-accent-ink); border-color: var(--color-accent-ink); }
+.gp-btn.gp-btn--outline.gp-btn--inverse { color: var(--color-text-inverse); border-color: var(--color-border-inverse); }
+.gp-btn.gp-btn--outline.gp-btn--inverse:hover { color: var(--color-accent); border-color: var(--color-accent); }
+
+.gp-btn.gp-btn--link {
+  min-height: var(--size-control-sm); padding: 0; background: none;
+  color: var(--color-text-primary); text-decoration: underline; justify-content: flex-start;
+}
+.gp-btn.gp-btn--link:hover { color: var(--color-accent-ink); }
+.gp-btn.gp-btn--link.gp-btn--inverse { color: var(--color-text-inverse); }
+.gp-btn.gp-btn--link.gp-btn--inverse:hover { color: var(--color-accent); }

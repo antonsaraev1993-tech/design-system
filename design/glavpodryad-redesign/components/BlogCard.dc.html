@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>BlogCard</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/9afbdd1d3a7a2ca396776f528a834ba2">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<a href="{{href}}" style="text-decoration: none; color: var(--color-text-primary); display: flex; flex-direction: column; gap: 14px; font-family: var(--font-body)">
+<dc-import name="Placeholder" label="[обложка статьи]" height="{{ 220 }}" hint-size="100%,220px"></dc-import>
+<span style="font-size: 13px; color: var(--color-text-muted)">{{date}}</span>
+<h3 style="margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1.3">{{heading}}</h3>
+</a>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"heading":{"editor":"text","default":"[Заголовок статьи из блога]"},"date":{"editor":"text","default":"[дата]"},"href":{"editor":"text","default":"#blog"},"$preview":{"width":389,"height":320}}'>
+class Component extends DCLogic {
+  renderVals() { return { heading: this.props.heading ?? '[Заголовок статьи из блога]', date: this.props.date ?? '[дата]', href: this.props.href ?? '#blog' }; }
+}
+</script>
+</body>
+</html>
