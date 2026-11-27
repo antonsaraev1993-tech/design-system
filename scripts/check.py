@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Проверка связности знания: problems -> patterns -> components -> tokens, decisions."""
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -34,7 +35,47 @@ def flatten(d, prefix=""):
 
 
 tags = set(yaml.safe_load((ROOT / "schema/tags.yaml").read_text(encoding="utf-8")))
-tokens = flatten(json.loads((ROOT / "tokens/tokens.json").read_text(encoding="utf-8")))
+tokens_text = (ROOT / "tokens/tokens.json").read_text(encoding="utf-8")
+tokens = flatten(json.loads(tokens_text))
+
+# tokens.json собирается из дизайн-системы и не должен от неё отставать
+sys.path.insert(0, str(ROOT / "scripts"))
+import build_tokens  # noqa: E402
+
+if tokens_text != build_tokens.render():
+    errors.append("tokens/tokens.json устарел: запусти python3 scripts/build_tokens.py")
+
+
+# значения в дизайн-системе (json) и в CSS, по которому собран сайт, совпадают
+def css_vars(path):
+    text = re.sub(r"/\*.*?\*/", "", path.read_text(encoding="utf-8"), flags=re.S)
+    root = text.split("@media")[0]  # мобильные переопределения не сравниваем
+    return dict(re.findall(r"(--[\w-]+)\s*:\s*([^;]+);", root))
+
+
+css = css_vars(ROOT / "design/glavpodryad-redesign/design-system/tokens.css")
+css.update({k: v for k, v in css_vars(ROOT / "site/css/tokens-ext.css").items() if k not in css})
+
+
+def walk(d, prefix=""):
+    for k, v in d.items():
+        if k.startswith("$"):
+            continue
+        if isinstance(v, dict) and "$value" in v:
+            yield prefix + k, v
+        elif isinstance(v, dict):
+            yield from walk(v, prefix + k + ".")
+
+
+for path, t in walk(json.loads(tokens_text)):
+    ext = t.get("$extensions", {}).get(build_tokens.EXT, {})
+    var = ext.get("css")
+    if not var:
+        continue
+    if var not in css:
+        warnings.append(f"токен {path}: {var} нет в CSS сайта")
+    elif str(t["$value"]).replace(" ", "") != css[var].replace(" ", "") and "clamp(" not in css[var]:
+        warnings.append(f"токен {path}: в дизайн-системе {t['$value']}, в CSS {var}: {css[var].strip()}")
 components = yaml.safe_load((ROOT / "components/index.yaml").read_text(encoding="utf-8"))
 composition = {p.stem for p in (ROOT / "composition").glob("*.md")}
 
