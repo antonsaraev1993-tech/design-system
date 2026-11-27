@@ -4,7 +4,7 @@
       "orange": {
         "500": {
           "$type": "color",
-          "$value": "#FF7A1A",
+          "$value": "#FF8833",
           "$description": "Accent / Primary"
         },
         "600": {

@@ -26,6 +26,9 @@ defined = set()
 for f in TOKEN_FILES:
     defined |= set(re.findall(r"(--[\w-]+)\s*:", f.read_text(encoding="utf-8")))
 
+# брейкпоинты: в @media var() не работает, допустимые числа перечислены как --gp-bp-* в tokens-ext.css
+BREAKPOINTS = set(re.findall(r"--gp-bp-[\w-]+\s*:\s*([\d.]+px)", (SITE / "css/tokens-ext.css").read_text(encoding="utf-8")))
+
 used = set()
 for css in sorted((SITE / "css").rglob("*.css")):
     text = re.sub(r"/\*.*?\*/", "", css.read_text(encoding="utf-8"), flags=re.S)
@@ -37,6 +40,8 @@ for css in sorted((SITE / "css").rglob("*.css")):
         for m in COLOR.findall(line):
             errors.append(f"{rel}:{n}: цвет без токена «{m}»")
         for m in LENGTH.findall(line):
+            if line.lstrip().startswith("@media") and m in BREAKPOINTS:
+                continue
             if float(re.match(r"\d*\.?\d+", m).group()) == 0:
                 continue  # 0px (например, запасное значение env()) не размер
             errors.append(f"{rel}:{n}: размер без токена «{m}»")
@@ -155,7 +160,7 @@ rows = [
     ("Кнопка «Отправить» в форме", "1", submit),
 ]
 
-expected_stats = ["100+ построенных домов", "6+ лет опыта", "6+ постоянных бригад", "90+ счастливых клиентов"]
+expected_stats = ["100+ построенных домов", "20+ лет опыта", "6+ постоянных бригад", "90+ счастливых клиентов"]
 if stats_labels != expected_stats:
     errors.append(f"цифры «О компании» не совпадают с HANDOFF: {stats_labels}")
 if chips != submenu[2:]:
