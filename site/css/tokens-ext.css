@@ -177,6 +177,7 @@
     --gp-space-hero-bottom: 48px;  /* 96 */
     --gp-space-3xl: 32px;          /* 48: отступ шапки секции до контента */
     --gp-header-py: 12px;          /* 20 */
+    --type-h2-size: 26px;          /* clamp(30px…): на 30 px длинные слова Unbounded шире экрана 320–375 px. Не 24: равно h3 */
     --type-stat-size: 40px;        /* 56: «100+» в колонке пол-экрана */
     --type-lead-size: 17px;        /* 19 */
     --gp-photo-h: 240px;           /* 300 */
