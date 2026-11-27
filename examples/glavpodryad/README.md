@@ -5,7 +5,7 @@
 | Что | Где |
 |---|---|
 | Знание о редизайне | `invariants/`, `problems/`, `patterns/`, `composition/`, `components/`, `tokens/`, `tags.yaml` |
-| Решения | `decisions/D-001` (пример формата, человек), `decisions/D-002` (холодный запуск агента, см. `docs/cold-run-01.md` в корне) |
+| Решения | `decisions/D-001` (пример формата, человек), `decisions/D-004` (холодный запуск агента, см. `docs/cold-run-01.md` в корне) |
 | Макеты компонентов и брендбук | `design/glavpodryad-redesign/` (начать с `HANDOFF.md`) |
 | Статическая главная по эталону | `site/index.html`, что заменить до запуска: `site/TODO.md` |
 
