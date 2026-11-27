@@ -1,3 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120"><!-- двухэтажный дом и баня -->
-<path fill-rule="evenodd" d="M30 50 L74 22 L118 50 Z M38 50 H110 V112 H38 Z M50 60 h16 v14 h-16 Z M82 60 h16 v14 h-16 Z M50 86 h16 v14 h-16 Z M82 86 h16 v26 h-16 Z M128 78 L152 62 L176 78 Z M134 78 H170 V112 H134 Z M142 86 h10 v8 h-10 Z"/>
-<rect x="160" y="62" width="6" height="12"/><rect x="0" y="112" width="200" height="2"/></svg>

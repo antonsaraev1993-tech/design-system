@@ -19,3 +19,7 @@
 .gp-project__meta b { font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
 .gp-project__more { margin-left: auto; font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
 .gp-project:hover .gp-project__more, .gp-project:hover .gp-project__title { color: var(--color-accent-ink); }
+/* Цена «от» второй строкой после названия (patterns/price-anchor, decisions/D-002). Цвет текста, не акцент: акцент только у главного действия */
+.gp-project__price { font-size: var(--type-body-size); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.gp-project__price-unit { font-size: var(--type-caption-size); font-weight: var(--font-weight-regular); color: var(--color-text-secondary); }
+.gp-project__photo { display: block; width: 100%; height: var(--gp-photo-h); object-fit: cover; }
