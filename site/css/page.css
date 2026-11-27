@@ -62,8 +62,8 @@
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-inline-sm); font-size: var(--type-label-size);
 }
 .gp-panel__status { font-weight: var(--font-weight-semibold); color: var(--color-accent-ink); }
-/* Ноутбук вокруг панели кабинета: крышка с рамкой, экран, корпус */
-.gp-laptop { display: flex; flex-direction: column; align-items: center; }
+/* Ноутбук вокруг панели кабинета: крышка с рамкой, экран 16:10, корпус. Внутренние размеры от ширины ноутбука (cqi) */
+.gp-laptop { display: flex; flex-direction: column; align-items: center; container-type: inline-size; transform: var(--gp-laptop-tilt); }
 .gp-laptop__lid {
   position: relative; align-self: stretch; background: var(--color-bg-inverse);
   border: var(--border-thin) solid var(--color-bg-media); border-radius: var(--gp-laptop-radius) var(--gp-laptop-radius) 0 0;
@@ -74,19 +74,64 @@
   width: var(--gp-laptop-cam); height: var(--gp-laptop-cam); transform: translateX(-50%);
   border-radius: var(--radius-full); background: var(--color-bg-media);
 }
-.gp-laptop .gp-panel { border: 0; padding: var(--gp-laptop-panel-pad); }
-.gp-laptop .gp-panel__money > div { padding: var(--gp-laptop-panel-pad); }
+.gp-laptop .gp-panel {
+  box-sizing: border-box; aspect-ratio: var(--gp-laptop-screen-ratio); overflow: hidden; border: 0;
+  padding: var(--gp-laptop-panel-pad); gap: var(--gp-laptop-gap); justify-content: space-between; font-size: var(--gp-laptop-type);
+}
+.gp-laptop .gp-panel__head { flex-wrap: nowrap; }
+.gp-laptop .gp-panel__head > div { min-width: 0; }
+.gp-laptop .gp-panel__title { font-size: var(--gp-laptop-type-title); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gp-laptop .gp-panel__label, .gp-laptop .gp-panel__progress-row, .gp-laptop .gp-panel__foot, .gp-laptop .gp-badge { font-size: var(--gp-laptop-type); }
+.gp-laptop .gp-badge { flex: none; padding: calc(var(--gp-laptop-gap) / 2) var(--gp-laptop-gap); }
+.gp-laptop .gp-panel__progress-row { margin-bottom: calc(var(--gp-laptop-gap) / 2); }
+.gp-laptop .gp-panel__money { gap: var(--gp-laptop-gap); }
+.gp-laptop .gp-panel__money > div { padding: var(--gp-laptop-gap) var(--gp-laptop-panel-pad); }
+.gp-laptop .gp-panel__value { font-size: var(--gp-laptop-type-money); }
+.gp-laptop .gp-panel__thumbs { gap: calc(var(--gp-laptop-gap) / 2); }
+.gp-laptop .gp-placeholder--thumb { height: var(--gp-laptop-thumb-h); font-size: var(--gp-laptop-type); }
+.gp-laptop .gp-panel__foot { padding-top: var(--gp-laptop-gap); flex-wrap: nowrap; }
 .gp-laptop .gp-skeleton { max-width: 100%; }
 .gp-laptop__base {
   position: relative; align-self: stretch; margin: 0 var(--gp-laptop-overhang);
   height: var(--gp-laptop-base-h); border-radius: var(--gp-laptop-base-radius);
-  background: linear-gradient(var(--color-border-divider), var(--color-border-default));
+  background: linear-gradient(var(--color-bg-media), var(--color-bg-inverse));
   box-shadow: var(--gp-laptop-shadow);
 }
 .gp-laptop__base::before {
   content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
   width: var(--gp-laptop-notch-w); height: var(--gp-laptop-notch-h);
-  border-radius: 0 0 var(--gp-laptop-notch-h) var(--gp-laptop-notch-h); background: var(--color-border-default);
+  border-radius: 0 0 var(--gp-laptop-notch-h) var(--gp-laptop-notch-h); background: var(--color-bg-inverse);
+}
+
+/* Ноутбук и телефон: телефон стоит справа поверх края ноутбука, прижат к низу */
+.gp-devices { position: relative; display: flex; align-items: flex-end; min-width: 0; } /* min-width: ячейка сетки иначе растягивается по содержимому */
+.gp-devices .gp-laptop { width: var(--gp-devices-laptop-w); min-width: 0; } /* min-width: иначе неразрывное название раздвигает ноутбук шире экрана */
+.gp-phone {
+  position: absolute; right: 0; bottom: 0; width: var(--gp-phone-w); aspect-ratio: 9 / 19;
+  box-sizing: border-box; padding: var(--gp-phone-bezel); background: var(--color-bg-inverse);
+  border: var(--border-thin) solid var(--color-bg-media); border-radius: var(--gp-phone-radius); box-shadow: var(--gp-phone-shadow);
+  transform: var(--gp-phone-tilt); container-type: inline-size;
+}
+.gp-phone__screen {
+  position: relative; box-sizing: border-box; height: 100%; overflow: hidden; border-radius: var(--gp-phone-screen-radius);
+  background: var(--color-bg-surface); padding: calc(var(--gp-phone-island-h) * 2 + var(--gp-phone-pad)) var(--gp-phone-pad) var(--gp-phone-pad);
+  display: flex; flex-direction: column; gap: var(--gp-phone-gap); font-size: var(--gp-phone-type); line-height: var(--gp-type-panel-lh);
+}
+.gp-phone__island {
+  position: absolute; top: var(--gp-phone-pad); left: 50%; transform: translateX(-50%);
+  width: var(--gp-phone-island-w); height: var(--gp-phone-island-h); border-radius: var(--radius-full); background: var(--color-bg-inverse);
+}
+.gp-phone__label { color: var(--color-text-muted); }
+.gp-phone__title { font-weight: var(--font-weight-bold); font-size: var(--gp-phone-type-title); } /* шрифт текста, не display: в узком экране display рвёт слово */
+.gp-phone__text { font-weight: var(--font-weight-semibold); }
+.gp-phone__row { display: flex; justify-content: space-between; gap: var(--gp-phone-gap); margin-bottom: calc(var(--gp-phone-gap) / 2); }
+.gp-phone__row:last-child { margin-bottom: 0; }
+.gp-phone__card { background: var(--color-bg-page); padding: var(--gp-phone-pad); }
+.gp-phone__sum { font-weight: var(--font-weight-bold); font-size: var(--gp-phone-type-title); }
+.gp-phone__sum:not(:last-child) { margin-bottom: calc(var(--gp-phone-gap) / 2); }
+.gp-phone__btn {
+  display: flex; align-items: center; justify-content: center; height: var(--gp-phone-btn-h); margin-top: calc(var(--gp-phone-gap) / 2);
+  background: var(--color-bg-inverse); color: var(--color-text-inverse); font-weight: var(--font-weight-semibold);
 }
 
 /* Серая полоса вместо данных кабинета, пока их нет (TODO.md) */
@@ -116,6 +161,9 @@
 
 /* ---------- Телефон (≤ --gp-bp-mobile). Отступы и размеры меняются токенами в tokens-ext.css, здесь только раскладка ---------- */
 @media (max-width: 767px) {
+  /* Телефон на узком экране не читается: остаётся только ноутбук на всю ширину */
+  .gp-phone { display: none; }
+  .gp-devices .gp-laptop { width: 100%; }
   /* Кнопки hero во всю ширину, не «одна длинная, одна короткая» */
   .gp-hero .gp-actions > .gp-btn { flex: 1 1 100%; }
   .gp-hero__grid { gap: var(--gp-space-xl); }
