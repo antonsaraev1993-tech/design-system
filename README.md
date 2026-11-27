@@ -28,5 +28,5 @@ python3 scripts/check.py
 ## Статус пилота
 
 - Проблемы P-001…P-005 выписаны по текущей главной (ноябрь 2026), без аналитики. Поле `evidence` пока экспертное, метрики `[уточнить у клиента]`.
-- Значения токенов заглушки, заменить выгрузкой из Tokens Studio.
+- `tokens/tokens.json` собирается из `design/glavpodryad-redesign/design-system/tokens.json` скриптом `python3 scripts/build_tokens.py`. Руками его не правят. Если файл отстал от дизайн-системы, `check.py` падает.
 - Решение одно, как пример формата: `decisions/D-001`.
