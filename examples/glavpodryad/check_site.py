@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Проверка site/: токены, захардкоженные значения, доступность, состав главной по HANDOFF.md.
 
-Запуск: python3 scripts/check_site.py   (код выхода 1, если есть ошибки)
+Запуск: python3 examples/glavpodryad/check_site.py   (код выхода 1, если есть ошибки)
 """
 import filecmp
 import re
@@ -9,7 +9,7 @@ import sys
 from html.parser import HTMLParser
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent
 SITE = ROOT / "site"
 REF = ROOT / "design/glavpodryad-redesign/design-system/tokens.css"
 TOKEN_FILES = {SITE / "css/tokens.css", SITE / "css/tokens-ext.css"}
