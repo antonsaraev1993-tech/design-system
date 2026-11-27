@@ -18,7 +18,11 @@
 .gp-video {
   position: relative; box-sizing: border-box; height: var(--gp-hero-video-h); padding: var(--space-page-gutter);
   background: var(--color-bg-media); display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--space-inline-md);
+  overflow: hidden; isolation: isolate;
 }
+/* Обложка-заглушка: рендер дома, пока нет видео. Затемнение снизу держит контраст подписи */
+.gp-video__poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.gp-video::before { content: ""; position: absolute; inset: 0; background: var(--gp-video-scrim); z-index: -1; }
 .gp-video__play { display: flex; align-items: center; gap: var(--space-inline-md); }
 .gp-video__caption { font-weight: var(--font-weight-semibold); }
 .gp-play {
@@ -73,8 +77,6 @@
 .gp-laptop .gp-panel { border: 0; padding: var(--gp-laptop-panel-pad); }
 .gp-laptop .gp-panel__money > div { padding: var(--gp-laptop-panel-pad); }
 .gp-laptop .gp-skeleton { max-width: 100%; }
-/* В тёмной теме фон панели = bg-media, кадр камеры иначе с ним сливается */
-[data-theme="dark"] .gp-laptop .gp-placeholder--dark { background: var(--color-bg-inverse); }
 .gp-laptop__base {
   position: relative; align-self: stretch; margin: 0 var(--gp-laptop-overhang);
   height: var(--gp-laptop-base-h); border-radius: var(--gp-laptop-base-radius);
@@ -96,8 +98,8 @@
 
 /* Контакты и форма */
 .gp-contacts { padding-bottom: var(--space-section-dark); }
-.gp-contacts__box { background: var(--color-bg-surface); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--gp-col-contact)), 1fr)); }
-.gp-contacts__info { padding: var(--gp-space-form); display: flex; flex-direction: column; gap: var(--gp-space-xl); border-right: var(--border-thin) solid var(--color-border-divider); }
+.gp-contacts__box { background: var(--color-border-divider); gap: var(--border-thin); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--gp-col-contact)), 1fr)); }
+.gp-contacts__info { padding: var(--gp-space-form); display: flex; flex-direction: column; gap: var(--gp-space-xl); background: var(--color-bg-surface); } /* линия между колонками или рядами: зазор 1 px на фоне divider */
 .gp-contacts__title {
   font-family: var(--font-display); font-weight: var(--font-weight-medium);
   font-size: var(--gp-type-contact-h2-size); line-height: var(--gp-type-panel-lh);
@@ -111,3 +113,18 @@
 .gp-form__intro { color: var(--color-text-secondary); }
 .gp-form__note { font-size: var(--type-caption-size); color: var(--color-text-muted); }
 .gp-form__status { background: var(--color-bg-page); border-left: var(--border-focus) solid var(--color-accent-ink); padding: var(--space-inline-sm) var(--space-inline-md); font-size: var(--type-body-sm-size); }
+
+/* ---------- Телефон (≤ --gp-bp-mobile). Отступы и размеры меняются токенами в tokens-ext.css, здесь только раскладка ---------- */
+@media (max-width: 767px) {
+  /* Кнопки hero во всю ширину, не «одна длинная, одна короткая» */
+  .gp-hero .gp-actions > .gp-btn { flex: 1 1 100%; }
+  .gp-hero__grid { gap: var(--gp-space-xl); }
+
+  /* Цифры «О компании» по две в ряд вместо четырёх строк */
+  .gp-about .gp-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--gp-space-xl); }
+
+  /* Логотипы партнёров по два */
+  .gp-partners { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .gp-contacts__phone { font-size: var(--gp-type-form-title-size); }
+}

@@ -11,10 +11,10 @@
 .gp-btn--block { display: flex; width: 100%; }
 .gp-btn__icon { width: var(--gp-icon-sm); height: var(--gp-icon-sm); flex: none; }
 
-/* Белый текст на accent-ink: 5.2:1 (AA). На --color-accent белый даёт 2.6:1, поэтому фон темнее.
-   Темнее accent-ink токена нет, hover обозначен подчёркиванием, а не сменой фона. */
-.gp-btn.gp-btn--primary, .gp-btn.gp-btn--primary:visited { background: var(--gp-btn-primary-bg); color: var(--color-text-inverse); }
-.gp-btn.gp-btn--primary:hover { background: var(--gp-btn-primary-bg); color: var(--color-text-inverse); text-decoration: underline; text-underline-offset: var(--gp-underline-offset); }
+/* Как в эталоне: фон color-accent, текст color-accent-on (8.3:1), hover color-accent-hover.
+   Белый текст на оранжевом не используется: 2.4:1. */
+.gp-btn.gp-btn--primary, .gp-btn.gp-btn--primary:visited { background: var(--color-accent); color: var(--color-accent-on); }
+.gp-btn.gp-btn--primary:hover { background: var(--color-accent-hover); color: var(--color-accent-on); }
 
 .gp-btn.gp-btn--outline { background: transparent; color: var(--color-text-primary); border: var(--border-thin) solid var(--color-border-strong); }
 .gp-btn.gp-btn--outline:hover { color: var(--color-accent-ink); border-color: var(--color-accent-ink); }

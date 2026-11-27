@@ -6,7 +6,6 @@
 <title>Главподряд: главная (концепт редизайна)</title>
 <meta name="description" content="Концепт редизайна главной glavpodryad.pro. Не официальный сайт компании.">
 <meta name="robots" content="noindex, nofollow">
-<script>/* тема до отрисовки, чтобы не мигало */try{if(localStorage.getItem("gp-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
@@ -32,7 +31,6 @@
 <script src="js/menu.js" defer></script>
 <script src="js/header.js" defer></script>
 <script src="js/form.js" defer></script>
-<script src="js/theme.js" defer></script>
 </head>
 <body>
 <a class="gp-skip" href="#main">К&nbsp;содержимому</a>
@@ -43,11 +41,14 @@
 
 <!-- Header -->
   <header class="gp-header gp-inverse">
-    <button class="gp-theme" type="button" aria-pressed="false" aria-label="Тёмная тема" title="Тёмная тема" hidden></button>
     <div class="gp-container gp-header__inner">
       <a class="gp-logo gp-logo--inverse" href="#top" aria-label="Главподряд, на главную" data-todo="TODO-01">
         <span class="gp-logo__mark" aria-hidden="true">Г</span><span class="gp-logo__word" aria-hidden="true">ГЛАВПОДРЯД</span>
       </a>
+      <button class="gp-header__burger" type="button" aria-expanded="false" aria-controls="header-panel" aria-label="Меню" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path class="gp-header__burger-open" d="M4 7h16M4 12h16M4 17h16"></path><path class="gp-header__burger-close" d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+      <div class="gp-header__panel" id="header-panel">
       <nav aria-label="Основное меню">
         <ul class="gp-header__menu">
           <li class="gp-header__item"><a class="gp-header__link" href="#about">О&nbsp;компании</a></li>
@@ -88,6 +89,7 @@
         <a class="gp-header__phone" href="tel:+78632098464">+7 (863) 209-84-64</a>
         <a class="gp-btn gp-btn--primary gp-btn--sm gp-cta" href="#form">Оставить заявку</a>
       </div>
+      </div>
     </div>
   </header>
 
@@ -97,7 +99,7 @@
   <section class="gp-hero" id="top">
     <div class="gp-container gp-hero__grid">
       <div class="gp-hero__col">
-        <p class="gp-overline" data-todo="TODO-14">Ростовская область · с&nbsp;2006&nbsp;года</p>
+        <p class="gp-overline">Ростовская область · с&nbsp;2006&nbsp;года</p>
         <h1 class="gp-hero__title">Строим дома <span class="gp-hero__accent">для комфортной жизни</span></h1>
       </div>
       <div class="gp-hero__col gp-hero__col--aside">
@@ -113,6 +115,7 @@
 
   <section class="gp-container" aria-label="Видео о компании">
     <div class="gp-video" data-todo="TODO-02">
+      <img class="gp-video__poster" src="img/video-poster.jpg" alt="" width="709" height="720">
       <div class="gp-video__play">
         <button class="gp-play" type="button" aria-label="Смотреть видео о компании" aria-describedby="video-note" disabled>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 5l11 7-11 7z"></path></svg>
@@ -185,7 +188,7 @@
     </div>
     <ul class="gp-stats">
       <li><div class="gp-stat"><span class="gp-stat__value">100+</span><span class="gp-stat__label">построенных домов</span></div></li>
-      <li><div class="gp-stat" data-todo="TODO-14"><span class="gp-stat__value">6+</span><span class="gp-stat__label">лет опыта</span></div></li>
+      <li><div class="gp-stat"><span class="gp-stat__value">20+</span><span class="gp-stat__label">лет опыта</span></div></li>
       <li><div class="gp-stat"><span class="gp-stat__value">6+</span><span class="gp-stat__label">постоянных бригад</span></div></li>
       <li><div class="gp-stat"><span class="gp-stat__value">90+</span><span class="gp-stat__label">счастливых клиентов</span></div></li>
     </ul>

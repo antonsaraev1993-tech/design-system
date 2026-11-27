@@ -2,7 +2,7 @@
    Подменю раскрывается панелью под шапкой: на узких экранах не вылезает за край. */
 .gp-header { position: sticky; top: 0; z-index: 20; transition: transform 0.25s ease; background: var(--color-bg-inverse); color: var(--color-text-inverse); border-bottom: var(--border-thin) solid var(--color-border-divider-inverse); }
 .gp-header__inner {
-  position: relative; padding-block: var(--gp-space-lg);
+  position: relative; padding-block: var(--gp-header-py);
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--gp-space-lg);
 }
 .gp-header__menu { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gp-space-xl); font-size: var(--gp-type-nav-size); font-weight: var(--font-weight-medium); }
@@ -69,20 +69,38 @@
 .gp-header__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gp-space-lg); }
 .gp-header__phone { text-decoration: none; font-weight: var(--font-weight-bold); font-size: var(--type-body-size); }
 
-/* Переключатель темы: маленькая точка у самого правого края экрана, вне контейнера шапки,
-   поэтому ширина шапки не меняется. По высоте на уровне логотипа.
-   Заполненная — светлая тема, кольцо — тёмная. Зона нажатия 44 px, сама точка 12 px. Без JS скрыт. */
-.gp-theme {
-  position: absolute; z-index: 6; right: env(safe-area-inset-right, 0px);
-  top: calc(var(--gp-space-lg) + (var(--gp-logo-mark) - var(--size-control-sm)) / 2);
-  display: inline-flex; align-items: center; justify-content: center;
-  min-width: var(--size-control-sm); min-height: var(--size-control-sm);
-  padding: 0; background: none; border: 0; color: var(--color-text-inverse); cursor: pointer;
+/* ---------- Узкие экраны (≤ --gp-bp-nav): меню, телефон и кнопка заявки уходят в панель под кнопкой «Меню» ----------
+   Класс gp-header--collapsible ставит js/menu.js: без JS шапка остаётся как на десктопе, переносом строк. */
+.gp-header__panel { display: contents; }
+.gp-header__burger { display: none; }
+@media (max-width: 1023px) {
+  .gp-header--collapsible .gp-header__burger {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: var(--size-control-sm); min-height: var(--size-control-sm);
+    padding: 0; background: none; border: 0; color: inherit; cursor: pointer;
+  }
+  .gp-header__burger svg { width: var(--gp-icon-lg); height: var(--gp-icon-lg); }
+  .gp-header__burger-close, .gp-header__burger[aria-expanded="true"] .gp-header__burger-open { display: none; }
+  .gp-header__burger[aria-expanded="true"] .gp-header__burger-close { display: inline; }
+  .gp-header__burger:hover { color: var(--color-accent); }
+
+  .gp-header--collapsible .gp-header__panel {
+    display: none; flex-basis: 100%; flex-direction: column; gap: var(--gp-space-lg);
+    max-height: calc(var(--gp-screen-h) - var(--gp-logo-mark) - 2 * var(--gp-header-py));
+    overflow-y: auto; overscroll-behavior: contain; padding-bottom: var(--gp-header-py);
+  }
+  .gp-header--collapsible.gp-header--open .gp-header__panel { display: flex; }
+
+  .gp-header--collapsible .gp-header__menu { flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: 0; font-size: var(--type-body-size); }
+  .gp-header--collapsible .gp-header__item { display: flex; flex-direction: column; align-items: stretch; gap: 0; border-bottom: var(--border-thin) solid var(--color-border-divider-inverse); }
+  .gp-header--collapsible .gp-header__link { display: flex; align-items: center; min-height: var(--size-control-md); }
+  .gp-header--collapsible .gp-header__toggle { justify-content: space-between; min-height: var(--size-control-md); margin: 0; text-align: left; }
+
+  /* Подменю внутри панели: обычный список под «Услугами», без рамки и превью */
+  .gp-header--collapsible .gp-submenu { position: static; display: block; padding: 0 0 var(--space-inline-sm) var(--space-inline-md); border: 0; }
+  .gp-header--collapsible .gp-submenu__preview { display: none; }
+
+  .gp-header--collapsible .gp-header__actions { flex-direction: column; align-items: stretch; gap: var(--space-inline-sm); }
+  .gp-header--collapsible .gp-header__phone { font-size: var(--type-h4-size); }
+  .gp-header--collapsible .gp-header__actions .gp-btn { min-height: var(--size-control-md); }
 }
-.gp-theme[hidden] { display: none; }
-.gp-theme::before {
-  content: ""; width: var(--gp-theme-dot); height: var(--gp-theme-dot); box-sizing: border-box;
-  border-radius: var(--radius-full); border: var(--border-focus) solid currentColor; background: currentColor;
-}
-.gp-theme[aria-pressed="true"]::before { background: transparent; }
-.gp-theme:hover { color: var(--color-accent); }
