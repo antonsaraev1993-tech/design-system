@@ -1,24 +1,32 @@
 #!/usr/bin/env python3
-"""Проверка связности знания: problems -> patterns -> components -> tokens, decisions."""
+"""Проверка связности знания одного проекта.
+
+problems -> patterns -> components -> tokens, patterns <-> patterns, decisions.
+
+    python3 scripts/check.py examples/glavpodryad
+    python3 scripts/check.py .            # если проект лежит в корне
+
+Код выхода 1, если есть ошибки. Предупреждения не роняют проверку.
+"""
 import json
-import re
 import sys
 from pathlib import Path
 
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
 errors, warnings = [], []
 
 REQUIRED = ["id", "title", "status", "context", "audience", "job",
             "observation", "tags", "severity"]
+RELATIONS = ("part_of", "contains", "see_also")
 
 
 def frontmatter(path):
     text = path.read_text(encoding="utf-8")
     if not text.startswith("---"):
         return None
-    return yaml.safe_load(text.split("---", 2)[1])
+    return yaml.safe_load(text.split("---", 2)[1]) or {}
 
 
 def flatten(d, prefix=""):
@@ -34,54 +42,35 @@ def flatten(d, prefix=""):
     return out
 
 
-tags = set(yaml.safe_load((ROOT / "schema/tags.yaml").read_text(encoding="utf-8")))
-tokens_text = (ROOT / "tokens/tokens.json").read_text(encoding="utf-8")
-tokens = flatten(json.loads(tokens_text))
-
-# tokens.json собирается из дизайн-системы и не должен от неё отставать
-sys.path.insert(0, str(ROOT / "scripts"))
-import build_tokens  # noqa: E402
-
-if tokens_text != build_tokens.render():
-    errors.append("tokens/tokens.json устарел: запусти python3 scripts/build_tokens.py")
+def load_yaml(rel, default):
+    p = ROOT / rel
+    return (yaml.safe_load(p.read_text(encoding="utf-8")) or default) if p.exists() else default
 
 
-# значения в дизайн-системе (json) и в CSS, по которому собран сайт, совпадают
-def css_vars(path):
-    text = re.sub(r"/\*.*?\*/", "", path.read_text(encoding="utf-8"), flags=re.S)
-    root = text.split("@media")[0]  # мобильные переопределения не сравниваем
-    return dict(re.findall(r"(--[\w-]+)\s*:\s*([^;]+);", root))
+if not (ROOT / "tags.yaml").exists():
+    sys.exit(f"{ROOT}: нет tags.yaml, это не папка проекта")
 
+tags = set(load_yaml("tags.yaml", {}))
+tokens_path = ROOT / "tokens/tokens.json"
+tokens = flatten(json.loads(tokens_path.read_text(encoding="utf-8"))) if tokens_path.exists() else set()
+components = load_yaml("components/index.yaml", {})
 
-css = css_vars(ROOT / "design/glavpodryad-redesign/design-system/tokens.css")
-css.update({k: v for k, v in css_vars(ROOT / "site/css/tokens-ext.css").items() if k not in css})
+# если tokens.json в проекте генерируется, генератор сам проверяет, что файл не устарел
+if (ROOT / "build_tokens.py").exists():
+    import importlib.util
 
+    spec = importlib.util.spec_from_file_location("build_tokens", ROOT / "build_tokens.py")
+    build_tokens = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(build_tokens)
+    e, w = build_tokens.check()
+    errors += e
+    warnings += w
 
-def walk(d, prefix=""):
-    for k, v in d.items():
-        if k.startswith("$"):
-            continue
-        if isinstance(v, dict) and "$value" in v:
-            yield prefix + k, v
-        elif isinstance(v, dict):
-            yield from walk(v, prefix + k + ".")
-
-
-for path, t in walk(json.loads(tokens_text)):
-    ext = t.get("$extensions", {}).get(build_tokens.EXT, {})
-    var = ext.get("css")
-    if not var:
-        continue
-    if var not in css:
-        warnings.append(f"токен {path}: {var} нет в CSS сайта")
-    elif str(t["$value"]).replace(" ", "") != css[var].replace(" ", "") and "clamp(" not in css[var]:
-        warnings.append(f"токен {path}: в дизайн-системе {t['$value']}, в CSS {var}: {css[var].strip()}")
-components = yaml.safe_load((ROOT / "components/index.yaml").read_text(encoding="utf-8"))
 composition = {p.stem for p in (ROOT / "composition").glob("*.md")}
 
 # components -> tokens
 for name, c in components.items():
-    for t in c.get("tokens", []):
+    for t in (c or {}).get("tokens", []):
         if t not in tokens:
             errors.append(f"component {name}: нет токена {t}")
 
@@ -89,7 +78,7 @@ for name, c in components.items():
 patterns = {}
 for p in sorted((ROOT / "patterns").glob("*.md")):
     fm = frontmatter(p)
-    if not fm:
+    if fm is None:
         errors.append(f"{p.name}: нет YAML-шапки")
         continue
     patterns[fm["id"]] = fm
@@ -105,19 +94,40 @@ for p in sorted((ROOT / "patterns").glob("*.md")):
 
 active = {k: v for k, v in patterns.items() if v.get("status") == "active"}
 
+# patterns <-> patterns, forces
+for pid, fm in patterns.items():
+    rel = fm.get("related") or {}
+    for kind in RELATIONS:
+        for other in rel.get(kind) or []:
+            if other not in patterns:
+                errors.append(f"pattern {pid}: related.{kind} ссылается на несуществующий {other}")
+    for other in rel.get("contains") or []:
+        back = (patterns.get(other, {}).get("related") or {}).get("part_of") or []
+        if other in patterns and pid not in back:
+            warnings.append(f"pattern {pid} contains {other}, но у {other} нет part_of: [{pid}]")
+    for i, f in enumerate(fm.get("forces") or []):
+        for key in ("pull", "against", "resolved_by"):
+            if not f.get(key):
+                errors.append(f"pattern {pid}: forces[{i}] без поля {key}")
+    if fm.get("status") == "active":
+        if not fm.get("forces"):
+            warnings.append(f"pattern {pid}: active, но нет forces")
+        if "related" not in fm:
+            warnings.append(f"pattern {pid}: active, но нет related")
+
 # problems
 problems = {}
 for p in sorted((ROOT / "problems").glob("*.yaml")):
-    pr = yaml.safe_load(p.read_text(encoding="utf-8"))
+    pr = yaml.safe_load(p.read_text(encoding="utf-8")) or {}
     problems[pr.get("id")] = pr
     for f in REQUIRED:
         if f not in pr:
             errors.append(f"{p.name}: нет поля {f}")
     for t in pr.get("tags", []):
         if t not in tags:
-            errors.append(f"{pr['id']}: тег {t} не в словаре")
+            errors.append(f"{pr.get('id')}: тег {t} не в словаре")
     if pr.get("status") in ("open", "in-progress"):
-        primary = pr.get("tags", [None])[0]
+        primary = (pr.get("tags") or [None])[0]
         match = [k for k, v in active.items() if primary in v.get("solves", [])]
         proposed = [k for k, v in patterns.items()
                     if v.get("status") == "proposed" and primary in v.get("solves", [])]
@@ -127,22 +137,39 @@ for p in sorted((ROOT / "problems").glob("*.yaml")):
             errors.append(f"{pr['id']}: нет паттерна для основного тега {primary}")
 
 # decisions
+covered = {}  # problem id -> теги, закрытые паттернами всех решений по ней
 for d in sorted((ROOT / "decisions").glob("D-*.md")):
     fm = frontmatter(d) or {}
-    for pid in fm.get("problems", []):
-        if pid not in problems:
-            errors.append(f"{fm.get('id')}: нет проблемы {pid}")
+    did = fm.get("id", d.stem)
+    solved = set()
     for pat in fm.get("patterns", []):
         if pat not in patterns:
-            errors.append(f"{fm.get('id')}: нет паттерна {pat}")
-        elif patterns[pat].get("status") != "active" and fm.get("status") == "accepted":
-            errors.append(f"{fm.get('id')}: принято на неактивном паттерне {pat}")
+            errors.append(f"{did}: нет паттерна {pat}")
+            continue
+        solved |= set(patterns[pat].get("solves", []))
+        if patterns[pat].get("status") != "active" and fm.get("status") == "accepted":
+            errors.append(f"{did}: принято на неактивном паттерне {pat}")
+    for pid in fm.get("problems", []):
+        if pid not in problems:
+            errors.append(f"{did}: нет проблемы {pid}")
+        covered.setdefault(pid, set()).update(solved)
+    assumptions = fm.get("assumptions") or []
+    for i, a in enumerate(assumptions):
+        if not isinstance(a, dict) or not a.get("claim") or not a.get("if_false"):
+            errors.append(f"{did}: assumptions[{i}] нужны поля claim и if_false")
+    if assumptions and fm.get("status") == "accepted":
+        errors.append(f"{did}: принято, но остались непроверенные assumptions")
+
+for pid, solved in covered.items():
+    missing = [t for t in problems.get(pid, {}).get("tags", []) if t not in solved]
+    if missing:
+        warnings.append(f"{pid}: теги {', '.join(missing)} не закрыты ни одним решением")
 
 # open questions
 todo = sum(f.read_text(encoding="utf-8").count("[уточнить")
            for f in ROOT.rglob("*") if f.is_file() and f.suffix in {".md", ".yaml", ".json"})
 
-print(f"problems {len(problems)} · patterns {len(patterns)} ({len(active)} active) · "
+print(f"{ROOT.name}: problems {len(problems)} · patterns {len(patterns)} ({len(active)} active) · "
       f"components {len(components)} · tokens {len(tokens)}")
 for w in warnings:
     print("WARN ", w)

@@ -1,4 +1,4 @@
-# Публикует папку site/ на GitHub Pages при каждом пуше в main.
+# Публикует examples/glavpodryad/site/ на GitHub Pages при каждом пуше в main.
 # Перед первым запуском: Settings → Pages → Build and deployment → Source: GitHub Actions.
 name: Deploy site to Pages
 
@@ -30,11 +30,11 @@ jobs:
       - name: Проверки
         run: |
           pip install pyyaml
-          python3 scripts/check.py
-          python3 scripts/check_site.py
+          python3 scripts/check.py examples/glavpodryad
+          python3 examples/glavpodryad/check_site.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: examples/glavpodryad/site
       - id: deployment
         uses: actions/deploy-pages@v4

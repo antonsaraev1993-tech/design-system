@@ -1,0 +1,25 @@
+/* ProjectCard · свойства: heading, status, area, floors, floorsLabel, href. Вся карточка одна ссылка. */
+.gp-projects {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--gp-col-project)), 1fr));
+  gap: var(--gp-space-card-row) var(--space-gap-cards);
+}
+.gp-project.gp-project { display: flex; flex-direction: column; gap: var(--gp-space-md); text-decoration: none; color: var(--color-text-primary); }
+.gp-project.gp-project:hover { color: var(--color-text-primary); }
+.gp-project__media { position: relative; }
+.gp-project__badge { position: absolute; top: var(--space-inline-md); left: var(--space-inline-md); }
+.gp-project__body { display: flex; flex-direction: column; gap: var(--gp-space-xs); }
+.gp-project__title { font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--type-h4-size); line-height: var(--type-h4-lh);
+  min-height: calc(var(--type-h4-size) * var(--type-h4-lh) * 2); /* всегда место под две строки: карточки в ряду одной высоты */
+}
+.gp-project__meta {
+  display: flex; flex-wrap: wrap; gap: var(--gp-space-lg); padding-top: var(--space-inline-sm);
+  border-top: var(--border-thin) solid var(--color-border-divider);
+  font-size: var(--type-body-sm-size); color: var(--color-text-secondary);
+}
+.gp-project__meta b { font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+.gp-project__more { margin-left: auto; font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.gp-project:hover .gp-project__more, .gp-project:hover .gp-project__title { color: var(--color-accent-ink); }
+/* Цена «от» второй строкой после названия (patterns/price-anchor, decisions/D-005). Цвет текста, не акцент: акцент только у главного действия */
+.gp-project__price { font-size: var(--type-body-size); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+.gp-project__price-unit { font-size: var(--type-caption-size); font-weight: var(--font-weight-regular); color: var(--color-text-secondary); }
+.gp-project__photo { display: block; width: 100%; height: var(--gp-photo-h); object-fit: cover; }

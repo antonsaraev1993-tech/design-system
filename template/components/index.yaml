@@ -1,0 +1,7 @@
+# Каталог компонентов. figma и code: ссылки на источник.
+
+button:
+  variants: [primary, secondary, link]
+  tokens: [color.accent, font.size.body]
+  figma: ""
+  code: ""
